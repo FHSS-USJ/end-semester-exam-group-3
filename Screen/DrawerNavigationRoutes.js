@@ -25,7 +25,7 @@ const homeScreenStack = ({navigation}) => {
             <NavigationDrawerHeader navigationProps={navigation} />
           ),
           headerStyle: {
-            backgroundColor: '#307ecc', //Set Header color
+            backgroundColor: '#1F319D', //Set Header color
           },
           headerTintColor: '#fff', //Set Header text color
           headerTitleStyle: {
@@ -46,7 +46,7 @@ const settingScreenStack = ({navigation}) => {
           <NavigationDrawerHeader navigationProps={navigation} />
         ),
         headerStyle: {
-          backgroundColor: '#307ecc', //Set Header color
+          backgroundColor: '#1F319D', //Set Header color
         },
         headerTintColor: '#fff', //Set Header text color
         headerTitleStyle: {
