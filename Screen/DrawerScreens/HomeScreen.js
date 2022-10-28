@@ -29,7 +29,7 @@ const HomeScreen = () => {
             textAlign: 'center',
             color: 'grey',
           }}>
-          Sound type recognition{'\n'}React Native
+          Sound type recognition App{'\n'}Group 03
         </Text>
         <Text
           style={{

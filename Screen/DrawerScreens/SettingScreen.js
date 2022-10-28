@@ -29,7 +29,7 @@ const SettingsScreen = () => {
             textAlign: 'center',
             color: 'grey',
           }}>
-          Sound Type Recognition{'\n'}React Native
+          Sound Type Recognition App{'\n'}Group 03
         </Text>
         <Text
           style={{

@@ -1,3 +1,5 @@
+// Import React
+// import React from 'react';
 import * as React from 'react';
 
 // Import Navigators from React Navigation
@@ -64,7 +66,7 @@ const settingScreenStack = ({navigation}) => {
   );
 };
 
-const DrawerNavigatorRoutes = (props) => {
+const DrawerNavigatorRoutes = props => {
   return (
     <Drawer.Navigator
       drawerContentOptions={{
