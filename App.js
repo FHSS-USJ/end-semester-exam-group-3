@@ -13,6 +13,7 @@ import SplashScreen from './Screen/SplashScreen';
 import LoginScreen from './Screen/LoginScreen';
 import RegisterScreen from './Screen/RegisterScreen';
 import DrawerNavigationRoutes from './Screen/DrawerNavigationRoutes';
+import ForgetPasswordScreen from './Screen/ForgetPasswordScreen';
 
 const Stack = createStackNavigator();
 
@@ -23,6 +24,11 @@ const Auth = () => {
       <Stack.Screen
         name="LoginScreen"
         component={LoginScreen}
+        options={{headerShown: false}}
+      />
+           <Stack.Screen
+        name="ForgetPasswordScreen"
+        component={ForgetPasswordScreen}
         options={{headerShown: false}}
       />
       <Stack.Screen
