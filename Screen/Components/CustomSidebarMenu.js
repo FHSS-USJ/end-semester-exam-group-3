@@ -11,12 +11,12 @@ import {
 
 import AsyncStorage from '@react-native-community/async-storage';
 
-const CustomSidebarMenu = (props) => {
+const CustomSidebarMenu = props => {
   return (
     <View style={stylesSidebar.sideMenuContainer}>
       <View style={stylesSidebar.profileHeader}>
         <View style={stylesSidebar.profileHeaderPicCircle}>
-          <Text style={{fontSize: 25, color: '#307ecc'}}>
+          <Text style={{fontSize: 25, color: '#1F319D'}}>
             {'Sound Cores'.charAt(0)}
           </Text>
         </View>
@@ -27,7 +27,7 @@ const CustomSidebarMenu = (props) => {
       <DrawerContentScrollView {...props}>
         <DrawerItemList {...props} />
         <DrawerItem
-          label={({color}) => <Text style={{color: '#d8d8d8'}}>Logout</Text>}
+          label={({color}) => <Text style={{color: '#1F319D'}}>Logout</Text>}
           onPress={() => {
             props.navigation.toggleDrawer();
             Alert.alert(
@@ -63,13 +63,13 @@ const stylesSidebar = StyleSheet.create({
   sideMenuContainer: {
     width: '100%',
     height: '100%',
-    backgroundColor: '#307ecc',
+    backgroundColor: 'white',
     paddingTop: 40,
     color: 'white',
   },
   profileHeader: {
     flexDirection: 'row',
-    backgroundColor: '#307ecc',
+    backgroundColor: '#1F319',
     padding: 15,
     textAlign: 'center',
   },
@@ -77,14 +77,15 @@ const stylesSidebar = StyleSheet.create({
     width: 60,
     height: 60,
     borderRadius: 60 / 2,
+    borderColor: '#1F319',
     color: 'white',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#add8e6 ',
     textAlign: 'center',
     justifyContent: 'center',
     alignItems: 'center',
   },
   profileHeaderText: {
-    color: 'white',
+    color: '#1F319',
     alignSelf: 'center',
     paddingHorizontal: 10,
     fontWeight: 'bold',

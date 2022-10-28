@@ -52,8 +52,8 @@ const LoginScreen = ({navigation}) => {
         'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
       },
     })
-      .then((response) => response.json())
-      .then((responseJson) => {
+      .then(response => response.json())
+      .then(responseJson => {
         //Hide Loader
         setLoading(false);
         console.log(responseJson);
@@ -67,7 +67,7 @@ const LoginScreen = ({navigation}) => {
           console.log('Please check your email id or password');
         }
       })
-      .catch((error) => {
+      .catch(error => {
         //Hide Loader
         setLoading(false);
         console.error(error);
@@ -88,7 +88,7 @@ const LoginScreen = ({navigation}) => {
           <KeyboardAvoidingView enabled>
             <View style={{alignItems: 'center'}}>
               <Image
-                source={require('../Image/aboutreact.png')}
+                source={require('../Image/logo.png')}
                 style={{
                   width: '50%',
                   height: 100,
@@ -100,7 +100,7 @@ const LoginScreen = ({navigation}) => {
             <View style={styles.SectionStyle}>
               <TextInput
                 style={styles.inputStyle}
-                onChangeText={(UserEmail) => setUserEmail(UserEmail)}
+                onChangeText={UserEmail => setUserEmail(UserEmail)}
                 placeholder="Enter Email" //dummy@abc.com
                 placeholderTextColor="#8b9cb5"
                 autoCapitalize="none"
@@ -116,7 +116,7 @@ const LoginScreen = ({navigation}) => {
             <View style={styles.SectionStyle}>
               <TextInput
                 style={styles.inputStyle}
-                onChangeText={(UserPassword) => setUserPassword(UserPassword)}
+                onChangeText={UserPassword => setUserPassword(UserPassword)}
                 placeholder="Enter Password" //12345
                 placeholderTextColor="#8b9cb5"
                 keyboardType="default"
@@ -143,6 +143,17 @@ const LoginScreen = ({navigation}) => {
               New Here ? Register
             </Text>
           </KeyboardAvoidingView>
+          <Text
+            style={styles.registerTextStyle}
+            onPress={() => navigation.navigate('forgetpasswordScreen')}>
+            forget password
+          </Text>
+          <Text
+            style={styles.registerTextStyle}
+            onPress={() => navigation.navigate('')}>
+            (NOTE: please use the UserEmail as 'dummy@abc.com' and the Password
+            as '12345' for login to asses the Intermediate release 01)
+          </Text>
         </View>
       </ScrollView>
     </View>
@@ -154,8 +165,8 @@ const styles = StyleSheet.create({
   mainBody: {
     flex: 1,
     justifyContent: 'center',
-    // backgroundColor: 'white',
-    backgroundColor: '#307ecc',
+    backgroundColor: 'white',
+    // backgroundColor: '#307ecc',
     alignContent: 'center',
   },
   SectionStyle: {
@@ -167,7 +178,7 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   buttonStyle: {
-    backgroundColor: '#7DE24E',
+    backgroundColor: '#1F319D',
     borderWidth: 0,
     color: '#FFFFFF',
     borderColor: '#7DE24E',
@@ -186,15 +197,15 @@ const styles = StyleSheet.create({
   },
   inputStyle: {
     flex: 1,
-    color: 'white',
+    color: 'black',
     paddingLeft: 15,
     paddingRight: 15,
     borderWidth: 1,
     borderRadius: 30,
-    borderColor: '#dadae8',
+    borderColor: '#C1C1C1',
   },
   registerTextStyle: {
-    color: '#FFFFFF',
+    color: 'black',
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 14,

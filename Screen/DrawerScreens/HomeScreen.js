@@ -1,6 +1,6 @@
 // Import React and Component
 import React from 'react';
-import {View, Text, SafeAreaView} from 'react-native';
+import {View, Text, SafeAreaView, Image, Touchableopacity} from 'react-native';
 
 const HomeScreen = () => {
   return (
@@ -14,23 +14,25 @@ const HomeScreen = () => {
           }}>
           <Text
             style={{
-              fontSize: 20,
+              fontSize: 30,
+
               textAlign: 'center',
               marginBottom: 16,
             }}>
-            SoundCores - Sound Type Detection App
-            {'\n\n'}
-            Home Screen
+            Ready for Listening
           </Text>
         </View>
-        <Text
+        <Image
           style={{
-            fontSize: 18,
-            textAlign: 'center',
-            color: 'grey',
-          }}>
-          Sound type recognition{'\n'}React Native
-        </Text>
+            width: '50%',
+            height: 200,
+            // resizeMode: 'contain',
+            alignSelf: 'center',
+            resizeMode: 'stretch',
+          }}
+          source={require('../Components/recorder.png')}
+        />
+
         <Text
           style={{
             fontSize: 16,

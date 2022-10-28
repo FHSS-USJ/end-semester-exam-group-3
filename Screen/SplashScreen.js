@@ -14,7 +14,7 @@ const SplashScreen = ({navigation}) => {
       //Check if user_id is set or not
       //If not then send for Authentication
       //else send to Home Screen
-      AsyncStorage.getItem('user_id').then((value) =>
+      AsyncStorage.getItem('user_id').then(value =>
         navigation.replace(value === null ? 'Auth' : 'DrawerNavigationRoutes'),
       );
     }, 5000);
@@ -23,7 +23,7 @@ const SplashScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Image
-        source={require('../Image/aboutreact.png')}
+        source={require('../Image/whiteLogo.png')}
         style={{width: '90%', resizeMode: 'contain', margin: 30}}
       />
       <ActivityIndicator
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#307ecc',
+    backgroundColor: '#1F319D',
   },
   activityIndicator: {
     alignItems: 'center',

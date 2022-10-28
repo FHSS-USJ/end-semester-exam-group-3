@@ -15,11 +15,13 @@ import {
 
 import Loader from './Components/Loader';
 
-const RegisterScreen = (props) => {
+const RegisterScreen = props => {
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [userAge, setUserAge] = useState('');
   const [userAddress, setUserAddress] = useState('');
+  const [userPassword, setUserPassword] = useState('');
+  const [userConfirmPassword, setUserConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [errortext, setErrortext] = useState('');
   const [isRegistraionSuccess, setIsRegistraionSuccess] = useState(false);
@@ -28,6 +30,9 @@ const RegisterScreen = (props) => {
   const emailInputRef = createRef();
   const ageInputRef = createRef();
   const addressInputRef = createRef();
+  const PasswordInputRef = createRef();
+  const ConfirmPasswordInputRef = createRef();
+
 
   const handleSubmitButton = () => {
     setErrortext('');
@@ -39,14 +44,25 @@ const RegisterScreen = (props) => {
       alert('Please fill Email');
       return;
     }
-    if (!userAge) {
-      alert('Please fill Age');
+    const expression =
+      /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+    if (!expression.test(userEmail)) {
+      alert('Please fill Valid Email');
       return;
     }
-    if (!userAddress) {
-      alert('Please fill Address');
+    if (!(userPassword.length > 6)) {
+      alert('Password is too short.Please enter more than 6 charactors');
       return;
     }
+    if (!userConfirmPassword) {
+      alert('Please fill Confirm Password');
+      return;
+    }
+    if (userPassword !== userConfirmPassword) {
+      alert("Passwords don't match.");
+      return;
+    }
+
     //Show Loader
     setLoading(true);
     var dataToSend = {
@@ -54,6 +70,8 @@ const RegisterScreen = (props) => {
       user_email: userEmail,
       user_age: userAge,
       user_address: userAddress,
+      user_Password: userPassword,
+      user_ConfirmPassword: userConfirmPassword,
     };
     var formBody = [];
     for (var key in dataToSend) {
@@ -71,8 +89,8 @@ const RegisterScreen = (props) => {
         'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
       },
     })
-      .then((response) => response.json())
-      .then((responseJson) => {
+      .then(response => response.json())
+      .then(responseJson => {
         //Hide Loader
         setLoading(false);
         console.log(responseJson);
@@ -84,7 +102,7 @@ const RegisterScreen = (props) => {
           setErrortext('Registration Unsuccessful');
         }
       })
-      .catch((error) => {
+      .catch(error => {
         //Hide Loader
         setLoading(false);
         console.error(error);
@@ -95,7 +113,7 @@ const RegisterScreen = (props) => {
       <View
         style={{
           flex: 1,
-          backgroundColor: '#307ecc',
+          backgroundColor: '#6f8294',
           justifyContent: 'center',
         }}>
         <Image
@@ -113,7 +131,7 @@ const RegisterScreen = (props) => {
     );
   }
   return (
-    <View style={{flex: 1, backgroundColor: '#307ecc'}}>
+    <View style={{flex: 1, backgroundColor: 'white'}}>
       <Loader loading={loading} />
       <ScrollView
         keyboardShouldPersistTaps="handled"
@@ -123,7 +141,7 @@ const RegisterScreen = (props) => {
         }}>
         <View style={{alignItems: 'center'}}>
           <Image
-            source={require('../Image/aboutreact.png')}
+            source={require('../Image/logo.png')}
             style={{
               width: '50%',
               height: 100,
@@ -136,7 +154,7 @@ const RegisterScreen = (props) => {
           <View style={styles.SectionStyle}>
             <TextInput
               style={styles.inputStyle}
-              onChangeText={(UserName) => setUserName(UserName)}
+              onChangeText={UserName => setUserName(UserName)}
               underlineColorAndroid="#f000"
               placeholder="Enter Name"
               placeholderTextColor="#8b9cb5"
@@ -151,7 +169,7 @@ const RegisterScreen = (props) => {
           <View style={styles.SectionStyle}>
             <TextInput
               style={styles.inputStyle}
-              onChangeText={(UserEmail) => setUserEmail(UserEmail)}
+              onChangeText={UserEmail => setUserEmail(UserEmail)}
               underlineColorAndroid="#f000"
               placeholder="Enter Email"
               placeholderTextColor="#8b9cb5"
@@ -167,7 +185,7 @@ const RegisterScreen = (props) => {
           <View style={styles.SectionStyle}>
             <TextInput
               style={styles.inputStyle}
-              onChangeText={(UserAge) => setUserAge(UserAge)}
+              onChangeText={UserAge => setUserAge(UserAge)}
               underlineColorAndroid="#f000"
               placeholder="Enter Age"
               placeholderTextColor="#8b9cb5"
@@ -183,7 +201,7 @@ const RegisterScreen = (props) => {
           <View style={styles.SectionStyle}>
             <TextInput
               style={styles.inputStyle}
-              onChangeText={(UserAddress) => setUserAddress(UserAddress)}
+              onChangeText={UserAddress => setUserAddress(UserAddress)}
               underlineColorAndroid="#f000"
               placeholder="Enter Address"
               placeholderTextColor="#8b9cb5"
@@ -194,6 +212,37 @@ const RegisterScreen = (props) => {
               blurOnSubmit={false}
             />
           </View>
+          <View style={styles.SectionStyle}>
+            <TextInput
+              style={styles.inputStyle}
+              onChangeText={UserPassword => setUserPassword(UserPassword)}
+              underlineColorAndroid="#f000"
+              placeholder="Password"
+              placeholderTextColor="#8b9cb5"
+              keyboardType="number-pad"
+              ref={addressInputRef}
+              returnKeyType="next"
+              onSubmitEditing={Keyboard.dismiss}
+              blurOnSubmit={false}
+            />
+          </View>
+          <View style={styles.SectionStyle}>
+            <TextInput
+              style={styles.inputStyle}
+              onChangeText={UserConfirmPassword =>
+                setUserConfirmPassword(UserConfirmPassword)
+              }
+              underlineColorAndroid="#f000"
+              placeholder="Confirm Password"
+              placeholderTextColor="#8b9cb5"
+              keyboardType="number-pad"
+              ref={addressInputRef}
+              returnKeyType="next"
+              onSubmitEditing={Keyboard.dismiss}
+              blurOnSubmit={false}
+            />
+          </View>
+
           {errortext != '' ? (
             <Text style={styles.errorTextStyle}> {errortext} </Text>
           ) : null}
@@ -220,10 +269,10 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   buttonStyle: {
-    backgroundColor: '#7DE24E',
+    backgroundColor: '#1F319D',
     borderWidth: 0,
     color: '#FFFFFF',
-    borderColor: '#7DE24E',
+    borderColor: '#1F319D',
     height: 40,
     alignItems: 'center',
     borderRadius: 30,
@@ -239,12 +288,12 @@ const styles = StyleSheet.create({
   },
   inputStyle: {
     flex: 1,
-    color: 'white',
+    color: 'black',
     paddingLeft: 15,
     paddingRight: 15,
     borderWidth: 1,
     borderRadius: 30,
-    borderColor: '#dadae8',
+    borderColor: '#C1C1C1',
   },
   errorTextStyle: {
     color: 'red',
