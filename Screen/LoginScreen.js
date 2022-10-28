@@ -148,6 +148,12 @@ const LoginScreen = ({navigation}) => {
             onPress={() => navigation.navigate('forgetpasswordScreen')}>
             forget password
           </Text>
+          <Text
+            style={styles.registerTextStyle}
+            onPress={() => navigation.navigate('')}>
+            (NOTE: please use the UserEmail as 'dummy@abc.com' and the Password
+            as '12345' for login to asses the Intermediate release 01)
+          </Text>
         </View>
       </ScrollView>
     </View>
