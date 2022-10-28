@@ -52,8 +52,8 @@ const LoginScreen = ({navigation}) => {
         'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
       },
     })
-      .then((response) => response.json())
-      .then((responseJson) => {
+      .then(response => response.json())
+      .then(responseJson => {
         //Hide Loader
         setLoading(false);
         console.log(responseJson);
@@ -67,7 +67,7 @@ const LoginScreen = ({navigation}) => {
           console.log('Please check your email id or password');
         }
       })
-      .catch((error) => {
+      .catch(error => {
         //Hide Loader
         setLoading(false);
         console.error(error);
@@ -100,7 +100,7 @@ const LoginScreen = ({navigation}) => {
             <View style={styles.SectionStyle}>
               <TextInput
                 style={styles.inputStyle}
-                onChangeText={(UserEmail) => setUserEmail(UserEmail)}
+                onChangeText={UserEmail => setUserEmail(UserEmail)}
                 placeholder="Enter Email" //dummy@abc.com
                 placeholderTextColor="#8b9cb5"
                 autoCapitalize="none"
@@ -116,7 +116,7 @@ const LoginScreen = ({navigation}) => {
             <View style={styles.SectionStyle}>
               <TextInput
                 style={styles.inputStyle}
-                onChangeText={(UserPassword) => setUserPassword(UserPassword)}
+                onChangeText={UserPassword => setUserPassword(UserPassword)}
                 placeholder="Enter Password" //12345
                 placeholderTextColor="#8b9cb5"
                 keyboardType="default"
@@ -144,10 +144,10 @@ const LoginScreen = ({navigation}) => {
             </Text>
           </KeyboardAvoidingView>
           <Text
-              style={styles.registerTextStyle}
-              onPress={() => navigation.navigate('')}>
-              forget password
-            </Text>
+            style={styles.registerTextStyle}
+            onPress={() => navigation.navigate('')}>
+            forget password
+          </Text>
         </View>
       </ScrollView>
     </View>
@@ -212,4 +212,3 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
 });
-
