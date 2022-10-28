@@ -143,6 +143,11 @@ const LoginScreen = ({navigation}) => {
               New Here ? Register
             </Text>
           </KeyboardAvoidingView>
+          <Text
+              style={styles.registerTextStyle}
+              onPress={() => navigation.navigate('')}>
+              forget password
+            </Text>
         </View>
       </ScrollView>
     </View>
