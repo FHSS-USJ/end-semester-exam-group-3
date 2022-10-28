@@ -145,7 +145,7 @@ const LoginScreen = ({navigation}) => {
           </KeyboardAvoidingView>
           <Text
             style={styles.registerTextStyle}
-            onPress={() => navigation.navigate('')}>
+            onPress={() => navigation.navigate('forgetpasswordScreen')}>
             forget password
           </Text>
         </View>
