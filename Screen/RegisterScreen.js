@@ -20,6 +20,8 @@ const RegisterScreen = props => {
   const [userEmail, setUserEmail] = useState('');
   const [userAge, setUserAge] = useState('');
   const [userAddress, setUserAddress] = useState('');
+  const [userPassword, setUserPassword] = useState('');
+  const [userConfirmPassword, setUserConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [errortext, setErrortext] = useState('');
   const [isRegistraionSuccess, setIsRegistraionSuccess] = useState(false);
@@ -28,6 +30,9 @@ const RegisterScreen = props => {
   const emailInputRef = createRef();
   const ageInputRef = createRef();
   const addressInputRef = createRef();
+  const PasswordInputRef = createRef();
+  const ConfirmPasswordInputRef = createRef();
+
 
   const handleSubmitButton = () => {
     setErrortext('');
@@ -45,6 +50,19 @@ const RegisterScreen = props => {
       alert('Please fill Valid Email');
       return;
     }
+    if (!(userPassword.length > 6)) {
+      alert('Password is too short.Please enter more than 6 charactors');
+      return;
+    }
+    if (!userConfirmPassword) {
+      alert('Please fill Confirm Password');
+      return;
+    }
+    if (userPassword !== userConfirmPassword) {
+      alert("Passwords don't match.");
+      return;
+    }
+
     //Show Loader
     setLoading(true);
     var dataToSend = {
@@ -52,6 +70,8 @@ const RegisterScreen = props => {
       user_email: userEmail,
       user_age: userAge,
       user_address: userAddress,
+      user_Password: userPassword,
+      user_ConfirmPassword: userConfirmPassword,
     };
     var formBody = [];
     for (var key in dataToSend) {
@@ -93,7 +113,7 @@ const RegisterScreen = props => {
       <View
         style={{
           flex: 1,
-          backgroundColor: '#',
+          backgroundColor: '#6f8294',
           justifyContent: 'center',
         }}>
         <Image
@@ -192,6 +212,37 @@ const RegisterScreen = props => {
               blurOnSubmit={false}
             />
           </View>
+          <View style={styles.SectionStyle}>
+            <TextInput
+              style={styles.inputStyle}
+              onChangeText={UserPassword => setUserPassword(UserPassword)}
+              underlineColorAndroid="#f000"
+              placeholder="Password"
+              placeholderTextColor="#8b9cb5"
+              keyboardType="number-pad"
+              ref={addressInputRef}
+              returnKeyType="next"
+              onSubmitEditing={Keyboard.dismiss}
+              blurOnSubmit={false}
+            />
+          </View>
+          <View style={styles.SectionStyle}>
+            <TextInput
+              style={styles.inputStyle}
+              onChangeText={UserConfirmPassword =>
+                setUserConfirmPassword(UserConfirmPassword)
+              }
+              underlineColorAndroid="#f000"
+              placeholder="Confirm Password"
+              placeholderTextColor="#8b9cb5"
+              keyboardType="number-pad"
+              ref={addressInputRef}
+              returnKeyType="next"
+              onSubmitEditing={Keyboard.dismiss}
+              blurOnSubmit={false}
+            />
+          </View>
+
           {errortext != '' ? (
             <Text style={styles.errorTextStyle}> {errortext} </Text>
           ) : null}
