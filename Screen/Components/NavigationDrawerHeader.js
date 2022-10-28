@@ -3,7 +3,7 @@
 import * as React from 'react';
 import {View, Image, TouchableOpacity} from 'react-native';
 
-const NavigationDrawerHeader = (props) => {
+const NavigationDrawerHeader = props => {
   const toggleDrawer = () => {
     props.navigationProps.toggleDrawer();
   };
@@ -13,14 +13,10 @@ const NavigationDrawerHeader = (props) => {
       <TouchableOpacity onPress={toggleDrawer}>
         <Image
           source={{
-            uri:
-              'https://raw.githubusercontent.com/AboutReact/sampleresource/master/drawerWhite.png',
-              
-         
-            }}
+            uri: 'https://raw.githubusercontent.com/AboutReact/sampleresource/master/drawerWhite.png',
+          }}
           style={{width: 25, height: 25, marginLeft: 5}}
         />
-         
       </TouchableOpacity>
     </View>
   );
