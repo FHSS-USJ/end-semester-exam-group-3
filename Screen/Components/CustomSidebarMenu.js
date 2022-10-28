@@ -11,7 +11,7 @@ import {
 
 import AsyncStorage from '@react-native-community/async-storage';
 
-const CustomSidebarMenu = (props) => {
+const CustomSidebarMenu = props => {
   return (
     <View style={stylesSidebar.sideMenuContainer}>
       <View style={stylesSidebar.profileHeader}>
