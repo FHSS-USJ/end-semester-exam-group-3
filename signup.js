@@ -10,3 +10,5 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
+
+//import Loader from './Components/Loader';
