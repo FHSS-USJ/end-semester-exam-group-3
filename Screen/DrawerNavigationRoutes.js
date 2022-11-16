@@ -8,7 +8,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 
 // Import Screens
 import HomeScreen from './DrawerScreens/HomeScreen';
-import SettingsScreen from './DrawerScreens/SettingScreen';
+import Speech2Text from './DrawerScreens/Speech2Text';
 import CustomSidebarMenu from './Components/CustomSidebarMenu';
 import NavigationDrawerHeader from './Components/NavigationDrawerHeader';
 
@@ -39,10 +39,10 @@ const homeScreenStack = ({navigation}) => {
   );
 };
 
-const settingScreenStack = ({navigation}) => {
+const Speech2TextScreenStack = ({navigation}) => {
   return (
     <Stack.Navigator
-      initialRouteName="SettingsScreen"
+      initialRouteName="Speech2Text"
       screenOptions={{
         headerLeft: () => (
           <NavigationDrawerHeader navigationProps={navigation} />
@@ -56,10 +56,10 @@ const settingScreenStack = ({navigation}) => {
         },
       }}>
       <Stack.Screen
-        name="SettingsScreen"
-        component={SettingsScreen}
+        name="Speech2Text"
+        component={Speech2Text}
         options={{
-          title: 'Settings', //Set Header Title
+          title: 'Speech2Text', //Set Header Title
         }}
       />
     </Stack.Navigator>
@@ -85,9 +85,9 @@ const DrawerNavigatorRoutes = props => {
         component={homeScreenStack}
       />
       <Drawer.Screen
-        name="settingScreenStack"
-        options={{drawerLabel: 'Setting Screen'}}
-        component={settingScreenStack}
+        name="Speech2TextScreenStack"
+        options={{drawerLabel: 'Speech2Text'}}
+        component={Speech2TextScreenStack}
       />
     </Drawer.Navigator>
   );
