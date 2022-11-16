@@ -9,6 +9,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 // Import Screens
 import HomeScreen from './DrawerScreens/HomeScreen';
 import Speech2Text from './DrawerScreens/Speech2Text';
+import Text2Speech from './DrawerScreens/Text2Speech';
 import CustomSidebarMenu from './Components/CustomSidebarMenu';
 import NavigationDrawerHeader from './Components/NavigationDrawerHeader';
 
@@ -66,6 +67,33 @@ const Speech2TextScreenStack = ({navigation}) => {
   );
 };
 
+const Text2SpeechScreenStack = ({navigation}) => {
+  return (
+    <Stack.Navigator
+      initialRouteName="Text2Speech"
+      screenOptions={{
+        headerLeft: () => (
+          <NavigationDrawerHeader navigationProps={navigation} />
+        ),
+        headerStyle: {
+          backgroundColor: '#1F319D', //Set Header color
+        },
+        headerTintColor: '#fff', //Set Header text color
+        headerTitleStyle: {
+          fontWeight: 'bold', //Set Header text style
+        },
+      }}>
+      <Stack.Screen
+        name="Text2Speech"
+        component={Text2Speech}
+        options={{
+          title: 'Text2Speech', //Set Header Title
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
 const DrawerNavigatorRoutes = props => {
   return (
     <Drawer.Navigator
@@ -88,6 +116,11 @@ const DrawerNavigatorRoutes = props => {
         name="Speech2TextScreenStack"
         options={{drawerLabel: 'Speech2Text'}}
         component={Speech2TextScreenStack}
+      />
+      <Drawer.Screen
+        name="Text2SpeechScreenStack"
+        options={{drawerLabel: 'Text2Speech'}}
+        component={Text2SpeechScreenStack}
       />
     </Drawer.Navigator>
   );
