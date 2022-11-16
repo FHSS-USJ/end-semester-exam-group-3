@@ -93,8 +93,10 @@ const Speech2Text = () => {
         onPress={() => setModalVisible(true)}
         style={{marginTop: 10}}>
         <Image
-          style={{width: 50, height: 50}}
-          source={require('../src/Images/mic.png')}
+          style={{width: 120, height: 50}}
+          source={require('../Components/recorder.png')}
+
+  
         />
       </TouchableOpacity>
       <Modal
@@ -159,7 +161,7 @@ const styles = StyleSheet.create({
   },
   modalView: {
     //margin: 20,
-    backgroundColor: '#3FB65F',
+    backgroundColor: '#1F319D',
     borderRadius: 10,
     maxHeight: '100%',
     padding: 35,
