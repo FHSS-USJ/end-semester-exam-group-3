@@ -10,13 +10,15 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import HomeScreen from './DrawerScreens/HomeScreen';
 import Speech2Text from './DrawerScreens/Speech2Text';
 import Text2Speech from './DrawerScreens/Text2Speech';
+import AudioTherapyScreen from './DrawerScreens/AudioTherapyScreen';
 import CustomSidebarMenu from './Components/CustomSidebarMenu';
 import NavigationDrawerHeader from './Components/NavigationDrawerHeader';
+
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-const homeScreenStack = ({navigation}) => {
+const HomeScreenStack = ({navigation}) => {
   return (
     <Stack.Navigator initialRouteName="HomeScreen">
       <Stack.Screen
@@ -94,6 +96,33 @@ const Text2SpeechScreenStack = ({navigation}) => {
   );
 };
 
+const AudioTherapyScreenStack = ({navigation}) => {
+  return (
+    <Stack.Navigator
+      initialRouteName="AudioTherapyScreen"
+      screenOptions={{
+        headerLeft: () => (
+          <NavigationDrawerHeader navigationProps={navigation} />
+        ),
+        headerStyle: {
+          backgroundColor: '#1F319D', //Set Header color
+        },
+        headerTintColor: '#fff', //Set Header text color
+        headerTitleStyle: {
+          fontWeight: 'bold', //Set Header text style
+        },
+      }}>
+      <Stack.Screen
+        name="AudioTherapyScreen"
+        component={AudioTherapyScreen}
+        options={{
+          title: 'AudioTherapyScreen', //Set Header Title
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
 const DrawerNavigatorRoutes = props => {
   return (
     <Drawer.Navigator
@@ -108,9 +137,9 @@ const DrawerNavigatorRoutes = props => {
       screenOptions={{headerShown: false}}
       drawerContent={CustomSidebarMenu}>
       <Drawer.Screen
-        name="homeScreenStack"
+        name="HomeScreenStack"
         options={{drawerLabel: 'Home Screen'}}
-        component={homeScreenStack}
+        component={HomeScreenStack}
       />
       <Drawer.Screen
         name="Speech2TextScreenStack"
@@ -121,6 +150,11 @@ const DrawerNavigatorRoutes = props => {
         name="Text2SpeechScreenStack"
         options={{drawerLabel: 'Text2Speech'}}
         component={Text2SpeechScreenStack}
+      />
+      <Drawer.Screen
+        name="AudioTherapyScreenStack"
+        options={{drawerLabel: 'AudioTherapyScreen'}}
+        component={AudioTherapyScreenStack}
       />
     </Drawer.Navigator>
   );
