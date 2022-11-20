@@ -9,6 +9,21 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Voice from '@react-native-voice/voice';
+import Share from 'react-native-share';
+
+const myCustomShare = async() =>{
+  const shareOptions = {
+    message: 'Text mg',
+  }
+
+  try {
+    const ShareResponse = await Share.open(shareOptions);
+    // console.log(JSON.stringify(ShareResponse));
+  } catch(error) {
+    console.log('Error => ', error);
+  }
+};
+
 const Speech2Text = () => {
   const [isRecord, setIsRecord] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
@@ -142,6 +157,26 @@ const Speech2Text = () => {
             <Text style={{position: 'absolute', bottom: 15, color: '#ffff'}}>
               English (United States)
             </Text>
+
+            <TouchableOpacity
+              onPress={myCustomShare}
+              style={{
+                marginTop: 10,
+              }}>
+              <Text style={{color: '#ffff', marginBottom: 20}}>share
+                {/* {buttonLabel} */}
+              </Text>
+              {/* <Image
+                style={{}}
+                tintColor="white"
+                source={require('../src/Images/mic.png')}
+              /> */}
+            </TouchableOpacity>
+
+
+
+
+
           </View>
         </View>
       </Modal>
