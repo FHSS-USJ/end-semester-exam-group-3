@@ -150,19 +150,11 @@ const GeoLocation = () => {
             textAlign: 'center',
             color: 'grey',
           }}>
-           This feature will be available only for the users who have
-            subscribed to our premium plan. You can use this feature free for a
-            trial period of 14 days. If you are willing to subscribe to our
-            premium plans, Please visit the subscription pane.
+          This feature will be available only for the users who have subscribed
+          to our premium plan. You can use this feature free for a trial period
+          of 14 days. If you are willing to subscribe to our premium plans,
+          Please visit the subscription pane.
         </Text>
-        {/* <Text
-          style={{
-            fontSize: 16,
-            textAlign: 'center',
-            color: 'grey',
-          }}>
-          SoundCores V1.0.0
-        </Text> */}
       </View>
     </SafeAreaView>
   );
