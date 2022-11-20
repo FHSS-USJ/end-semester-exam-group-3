@@ -51,9 +51,9 @@ const rating = () => {
     <SafeAreaView style={styles.container}>
       <View style={styles.container}>
         <Text style={styles.titleText}>
-          React Native Custom Star Rating Bar
+          Your Honest Rating is Much Valued!
         </Text>
-        <Text style={styles.textStyle}>How was your experience with us</Text>
+        <Text style={styles.textStyle}>How was your experience with us?</Text>
         <Text style={styles.textStyleSmall}>Please Rate Us</Text>
         {/* View to hold our Stars */}
         <CustomRatingBar />
@@ -66,7 +66,7 @@ const rating = () => {
           style={styles.buttonStyle}
           onPress={() => alert(defaultRating)}>
           {/* Clicking on button will show the rating as an alert */}
-          <Text style={styles.buttonTextStyle}>Get Selected Value</Text>
+          <Text style={styles.buttonTextStyle}>Submit</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 30,
     padding: 15,
-    backgroundColor: '#8ad24e',
+    backgroundColor: '#1F319D',
   },
   buttonTextStyle: {
     color: '#fff',
