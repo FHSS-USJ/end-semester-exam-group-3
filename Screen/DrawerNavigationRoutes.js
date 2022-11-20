@@ -127,7 +127,7 @@ const AudioTherapyScreenStack = ({navigation}) => {
   );
 };
 
-const ratingScreenStack = ({navigation}) => {
+const RatingScreenStack = ({navigation}) => {
   return (
     <Stack.Navigator
       initialRouteName="rating"
@@ -154,7 +154,7 @@ const ratingScreenStack = ({navigation}) => {
   );
 };
 
-const birdWatchersScreenStack = ({navigation}) => {
+const BirdWatchersScreenStack = ({navigation}) => {
   return (
     <Stack.Navigator initialRouteName="birdWatchers">
       <Stack.Screen
@@ -224,7 +224,29 @@ const DistanceCalculatorScreenStack = ({navigation}) => {
     </Stack.Navigator>
   );
 };
-
+const WeatherScreenStack = ({navigation}) => {
+  return (
+    <Stack.Navigator initialRouteName="Weather">
+      <Stack.Screen
+        name="Weather"
+        component={Weather}
+        options={{
+          title: 'Weather for BirdWatchers', //Set Header Title
+          headerLeft: () => (
+            <NavigationDrawerHeader navigationProps={navigation} />
+          ),
+          headerStyle: {
+            backgroundColor: '#1F319D', //Set Header color
+          },
+          headerTintColor: '#fff', //Set Header text color
+          headerTitleStyle: {
+            fontWeight: 'bold', //Set Header text style
+          },
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
 const DrawerNavigatorRoutes = props => {
   return (
     <Drawer.Navigator
@@ -261,12 +283,12 @@ const DrawerNavigatorRoutes = props => {
       <Drawer.Screen
         name="rating"
         options={{drawerLabel: 'Rate Us'}}
-        component={ratingScreenStack}
+        component={RatingScreenStack}
       />
       <Drawer.Screen
         name="birdWatchersScreenStack"
         options={{drawerLabel: 'Bird Identifier for BirdWatchers'}}
-        component={birdWatchersScreenStack}
+        component={BirdWatchersScreenStack}
       />
       <Drawer.Screen
         name="GeoLocationScreenStack"
@@ -277,6 +299,11 @@ const DrawerNavigatorRoutes = props => {
         name="DistanceCalculatorScreenStack"
         options={{drawerLabel: 'Distance Calculator for BirdWatchers'}}
         component={DistanceCalculatorScreenStack}
+      />
+      <Drawer.Screen
+        name="WeatherScreenStack"
+        options={{drawerLabel: 'Weather for BirdWatchers'}}
+        component={WeatherScreenStack}
       />
     </Drawer.Navigator>
   );
