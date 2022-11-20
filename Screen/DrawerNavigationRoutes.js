@@ -8,6 +8,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 
 // Import Screens
 import HomeScreen from './DrawerScreens/HomeScreen';
+import rating from './DrawerScreens/rating';
 import Speech2Text from './DrawerScreens/Speech2Text';
 import Text2Speech from './DrawerScreens/Text2Speech';
 import AudioTherapyScreen from './DrawerScreens/AudioTherapyScreen';
@@ -123,6 +124,33 @@ const AudioTherapyScreenStack = ({navigation}) => {
   );
 };
 
+const ratingScreenStack = ({navigation}) => {
+  return (
+    <Stack.Navigator
+      initialRouteName="rating"
+      screenOptions={{
+        headerLeft: () => (
+          <NavigationDrawerHeader navigationProps={navigation} />
+        ),
+        headerStyle: {
+          backgroundColor: '#1F319D', //Set Header color
+        },
+        headerTintColor: '#fff', //Set Header text color
+        headerTitleStyle: {
+          fontWeight: 'bold', //Set Header text style
+        },
+      }}>
+      <Stack.Screen
+        name="rating"
+        component={rating}
+        options={{
+          title: 'rating', //Set Header Title
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
 const DrawerNavigatorRoutes = props => {
   return (
     <Drawer.Navigator
@@ -155,6 +183,11 @@ const DrawerNavigatorRoutes = props => {
         name="AudioTherapyScreenStack"
         options={{drawerLabel: 'AudioTherapyScreen'}}
         component={AudioTherapyScreenStack}
+      />
+      <Drawer.Screen
+        name="rating"
+        options={{drawerLabel: 'Rate Us'}}
+        component={ratingScreenStack}
       />
     </Drawer.Navigator>
   );
