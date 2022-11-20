@@ -13,6 +13,7 @@ import LoginScreen from './Screen/LoginScreen';
 import RegisterScreen from './Screen/RegisterScreen';
 import DrawerNavigationRoutes from './Screen/DrawerNavigationRoutes';
 
+
 const Stack = createStackNavigator();
 
 const Auth = () => {
@@ -41,6 +42,7 @@ const Auth = () => {
     </Stack.Navigator>
   );
 };
+
 
 /* Switch Navigator for those screens which needs to be switched only once
   and we don't want to switch back once we switch from them to the next one */
