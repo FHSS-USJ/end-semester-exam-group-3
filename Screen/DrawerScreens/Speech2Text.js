@@ -95,8 +95,6 @@ const Speech2Text = () => {
         <Image
           style={{width: 120, height: 50}}
           source={require('../Components/recorder.png')}
-
-  
         />
       </TouchableOpacity>
       <Modal
@@ -120,7 +118,6 @@ const Speech2Text = () => {
                   width: 20,
                 }}
                 source={require('../src/Images/close.png')}
-              
               />
             </TouchableOpacity>
 
