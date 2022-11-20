@@ -8,14 +8,21 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 
 // Import Screens
 import HomeScreen from './DrawerScreens/HomeScreen';
-import SettingsScreen from './DrawerScreens/SettingScreen';
+import rating from './DrawerScreens/rating';
+import Speech2Text from './DrawerScreens/Speech2Text';
+import Text2Speech from './DrawerScreens/Text2Speech';
+import AudioTherapyScreen from './DrawerScreens/AudioTherapyScreen';
+import birdWatchers from './DrawerScreens/birdWatchers';
+import GeoLocation from './DrawerScreens/GeoLocation';
+import DistanceCalculator from './DrawerScreens/DistanceCalculator';
+import Weather from './DrawerScreens/Weather';
 import CustomSidebarMenu from './Components/CustomSidebarMenu';
 import NavigationDrawerHeader from './Components/NavigationDrawerHeader';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-const homeScreenStack = ({navigation}) => {
+const HomeScreenStack = ({navigation}) => {
   return (
     <Stack.Navigator initialRouteName="HomeScreen">
       <Stack.Screen
@@ -39,10 +46,10 @@ const homeScreenStack = ({navigation}) => {
   );
 };
 
-const settingScreenStack = ({navigation}) => {
+const Speech2TextScreenStack = ({navigation}) => {
   return (
     <Stack.Navigator
-      initialRouteName="SettingsScreen"
+      initialRouteName="Speech2Text"
       screenOptions={{
         headerLeft: () => (
           <NavigationDrawerHeader navigationProps={navigation} />
@@ -56,16 +63,190 @@ const settingScreenStack = ({navigation}) => {
         },
       }}>
       <Stack.Screen
-        name="SettingsScreen"
-        component={SettingsScreen}
+        name="Speech2Text"
+        component={Speech2Text}
         options={{
-          title: 'Settings', //Set Header Title
+          title: 'Speech to Text', //Set Header Title
         }}
       />
     </Stack.Navigator>
   );
 };
 
+const Text2SpeechScreenStack = ({navigation}) => {
+  return (
+    <Stack.Navigator
+      initialRouteName="Text2Speech"
+      screenOptions={{
+        headerLeft: () => (
+          <NavigationDrawerHeader navigationProps={navigation} />
+        ),
+        headerStyle: {
+          backgroundColor: '#1F319D', //Set Header color
+        },
+        headerTintColor: '#fff', //Set Header text color
+        headerTitleStyle: {
+          fontWeight: 'bold', //Set Header text style
+        },
+      }}>
+      <Stack.Screen
+        name="Text2Speech"
+        component={Text2Speech}
+        options={{
+          title: 'Text to Speech', //Set Header Title
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
+const AudioTherapyScreenStack = ({navigation}) => {
+  return (
+    <Stack.Navigator
+      initialRouteName="AudioTherapyScreen"
+      screenOptions={{
+        headerLeft: () => (
+          <NavigationDrawerHeader navigationProps={navigation} />
+        ),
+        headerStyle: {
+          backgroundColor: '#1F319D', //Set Header color
+        },
+        headerTintColor: '#fff', //Set Header text color
+        headerTitleStyle: {
+          fontWeight: 'bold', //Set Header text style
+        },
+      }}>
+      <Stack.Screen
+        name="AudioTherapyScreen"
+        component={AudioTherapyScreen}
+        options={{
+          title: 'Audio Therapy', //Set Header Title
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
+const RatingScreenStack = ({navigation}) => {
+  return (
+    <Stack.Navigator
+      initialRouteName="rating"
+      screenOptions={{
+        headerLeft: () => (
+          <NavigationDrawerHeader navigationProps={navigation} />
+        ),
+        headerStyle: {
+          backgroundColor: '#1F319D', //Set Header color
+        },
+        headerTintColor: '#fff', //Set Header text color
+        headerTitleStyle: {
+          fontWeight: 'bold', //Set Header text style
+        },
+      }}>
+      <Stack.Screen
+        name="rating"
+        component={rating}
+        options={{
+          title: 'Rate Us', //Set Header Title
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
+const BirdWatchersScreenStack = ({navigation}) => {
+  return (
+    <Stack.Navigator initialRouteName="birdWatchers">
+      <Stack.Screen
+        name="birdWatchers"
+        component={birdWatchers}
+        options={{
+          title: ' ♛ Bird Identifier for BirdWatchers', //Set Header Title
+          headerLeft: () => (
+            <NavigationDrawerHeader navigationProps={navigation} />
+          ),
+          headerStyle: {
+            backgroundColor: '#1F319D', //Set Header color
+          },
+          headerTintColor: '#D4AF37', //Set Header text color
+          headerTitleStyle: {
+            fontWeight: 'bold', //Set Header text style
+          },
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+const GeoLocationScreenStack = ({navigation}) => {
+  return (
+    <Stack.Navigator initialRouteName="GeoLocation">
+      <Stack.Screen
+        name="GeoLocation"
+        component={GeoLocation}
+        options={{
+          title: '♛ GeoLocation for BirdWatchers', //Set Header Title
+          headerLeft: () => (
+            <NavigationDrawerHeader navigationProps={navigation} />
+          ),
+          headerStyle: {
+            backgroundColor: '#1F319D', //Set Header color
+          },
+          headerTintColor: '#D4AF37', //Set Header text color
+          headerTitleStyle: {
+            fontWeight: 'bold', //Set Header text style
+          },
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
+const DistanceCalculatorScreenStack = ({navigation}) => {
+  return (
+    <Stack.Navigator initialRouteName="DistanceCalculator">
+      <Stack.Screen
+        name="DistanceCalculator"
+        component={DistanceCalculator}
+        options={{
+          title: '♛ Distance Calculator for BirdWatchers', //Set Header Title
+          headerLeft: () => (
+            <NavigationDrawerHeader navigationProps={navigation} />
+          ),
+          headerStyle: {
+            backgroundColor: '#1F319D', //Set Header color
+          },
+          headerTintColor: '#D4AF37', //Set Header text color
+          headerTitleStyle: {
+            fontWeight: 'bold', //Set Header text style
+          },
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+const WeatherScreenStack = ({navigation}) => {
+  return (
+    <Stack.Navigator initialRouteName="Weather">
+      <Stack.Screen
+        name="Weather"
+        component={Weather}
+        options={{
+          title: '♛ Weather for BirdWatchers', //Set Header Title
+          headerLeft: () => (
+            <NavigationDrawerHeader navigationProps={navigation} />
+          ),
+          headerStyle: {
+            backgroundColor: '#1F319D', //Set Header color
+          },
+          headerTintColor: '#D4AF37', //Set Header text color
+          headerTitleStyle: {
+            fontWeight: 'bold', //Set Header text style
+          },
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
 const DrawerNavigatorRoutes = props => {
   return (
     <Drawer.Navigator
@@ -80,14 +261,49 @@ const DrawerNavigatorRoutes = props => {
       screenOptions={{headerShown: false}}
       drawerContent={CustomSidebarMenu}>
       <Drawer.Screen
-        name="homeScreenStack"
-        options={{drawerLabel: 'Home Screen'}}
-        component={homeScreenStack}
+        name="HomeScreenStack"
+        options={{drawerLabel: 'Sound Type Identifier'}}
+        component={HomeScreenStack}
       />
       <Drawer.Screen
-        name="settingScreenStack"
-        options={{drawerLabel: 'Setting Screen'}}
-        component={settingScreenStack}
+        name="Speech2TextScreenStack"
+        options={{drawerLabel: 'Speech to Text'}}
+        component={Speech2TextScreenStack}
+      />
+      <Drawer.Screen
+        name="Text2SpeechScreenStack"
+        options={{drawerLabel: 'Text to Speech'}}
+        component={Text2SpeechScreenStack}
+      />
+      <Drawer.Screen
+        name="AudioTherapyScreenStack"
+        options={{drawerLabel: 'Audio Therapy'}}
+        component={AudioTherapyScreenStack}
+      />
+      <Drawer.Screen
+        name="rating"
+        options={{drawerLabel: 'Rate Us'}}
+        component={RatingScreenStack}
+      />
+      <Drawer.Screen
+        name="birdWatchersScreenStack"
+        options={{drawerLabel: '♛ Bird Identifier for BirdWatchers'}}
+        component={BirdWatchersScreenStack}
+      />
+      <Drawer.Screen
+        name="GeoLocationScreenStack"
+        options={{drawerLabel: '♛ GeoLocation for BirdWatchers'}}
+        component={GeoLocationScreenStack}
+      />
+      <Drawer.Screen
+        name="DistanceCalculatorScreenStack"
+        options={{drawerLabel: '♛ Distance Calculator for BirdWatchers'}}
+        component={DistanceCalculatorScreenStack}
+      />
+      <Drawer.Screen
+        name="WeatherScreenStack"
+        options={{drawerLabel: '♛ Weather for BirdWatchers'}}
+        component={WeatherScreenStack}
       />
     </Drawer.Navigator>
   );
