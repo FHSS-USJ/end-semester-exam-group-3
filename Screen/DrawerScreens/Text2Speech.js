@@ -89,7 +89,6 @@ const Text2Speech = () => {
     try {
       await Tts.setDefaultLanguage(voice.language);
     } catch (err) {
-      // Samsung S9 has always this error:
       // "Language is not supported"
       console.log(`setDefaultLanguage error `, err);
     }
@@ -185,7 +184,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 15,
     padding: 10,
-    backgroundColor: '#8ad24e',
+    backgroundColor: '#1F319D',
   },
   buttonTextStyle: {
     color: '#fff',
