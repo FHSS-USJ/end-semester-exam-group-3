@@ -13,12 +13,12 @@ import Share from 'react-native-share';
 
 const myCustomShare = async() =>{
   const shareOptions = {
-    message: 'Text mg',
+    message: Voice.onSpeechPartialResults,
   }
 
   try {
     const ShareResponse = await Share.open(shareOptions);
-    // console.log(JSON.stringify(ShareResponse));
+    console.log(JSON.stringify(ShareResponse));
   } catch(error) {
     console.log('Error => ', error);
   }
@@ -154,28 +154,19 @@ const Speech2Text = () => {
             <Text style={{color: '#ffff', marginTop: 5}}>
               {voiceButtonText}
             </Text>
-            <Text style={{position: 'absolute', bottom: 15, color: '#ffff'}}>
-              English (United States)
-            </Text>
-
+            
             <TouchableOpacity
               onPress={myCustomShare}
-              style={{
-                marginTop: 10,
-              }}>
-              <Text style={{color: '#ffff', marginBottom: 20}}>share
-                {/* {buttonLabel} */}
-              </Text>
+              style={{marginTop: 20,}}>
+              <Text style={{color: '#ffff', marginBottom: 10, fontSize: 16}}>Share</Text>
               {/* <Image
                 style={{}}
                 tintColor="white"
-                source={require('../src/Images/mic.png')}
-              /> */}
+                source={require('../src/Images/share1.png')}/> */}
             </TouchableOpacity>
-
-
-
-
+            <Text style={{position: 'absolute', bottom: 20, color: '#ffff'}}>
+              English (United States)
+            </Text>
 
           </View>
         </View>
