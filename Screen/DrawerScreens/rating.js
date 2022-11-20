@@ -16,10 +16,10 @@ const rating = () => {
   // To set the max number of Stars
   const [maxRating, setMaxRating] = useState([1, 2, 3, 4, 5]);
 
-  // Filled Star. You can also give the path from local
+  // Filled Star. 
   const starImageFilled =
     'https://raw.githubusercontent.com/AboutReact/sampleresource/master/star_filled.png';
-  // Empty Star. You can also give the path from local
+  // Empty Star. 
   const starImageCorner =
     'https://raw.githubusercontent.com/AboutReact/sampleresource/master/star_corner.png';
 
@@ -64,7 +64,7 @@ const rating = () => {
         <TouchableOpacity
           activeOpacity={0.7}
           style={styles.buttonStyle}
-          onPress={() => alert(defaultRating)}>
+          onPress={() => alert('Thank You for rating us a ' + defaultRating+'/5')}>
           {/* Clicking on button will show the rating as an alert */}
           <Text style={styles.buttonTextStyle}>Submit</Text>
         </TouchableOpacity>
