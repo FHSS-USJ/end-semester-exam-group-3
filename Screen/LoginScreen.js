@@ -152,7 +152,7 @@ const LoginScreen = ({navigation}) => {
             style={styles.registerTextStyle}
             onPress={() => navigation.navigate('')}>
             (NOTE: please use the UserEmail as 'dummy@abc.com' and the Password
-            as '12345' for login to asses the Intermediate release 01)
+            as '12345' for login to asses the Intermediate release 02)
           </Text>
         </View>
       </ScrollView>
