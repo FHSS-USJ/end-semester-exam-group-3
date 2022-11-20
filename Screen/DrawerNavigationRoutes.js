@@ -13,6 +13,7 @@ import Speech2Text from './DrawerScreens/Speech2Text';
 import Text2Speech from './DrawerScreens/Text2Speech';
 import AudioTherapyScreen from './DrawerScreens/AudioTherapyScreen';
 import birdWatchers from './DrawerScreens/birdWatchers';
+import GeoLocation from './DrawerScreens/GeoLocation';
 import CustomSidebarMenu from './Components/CustomSidebarMenu';
 import NavigationDrawerHeader from './Components/NavigationDrawerHeader';
 
@@ -175,6 +176,29 @@ const birdWatchersScreenStack = ({navigation}) => {
     </Stack.Navigator>
   );
 };
+const GeoLocationScreenStack = ({navigation}) => {
+  return (
+    <Stack.Navigator initialRouteName="GeoLocation">
+      <Stack.Screen
+        name="GeoLocation"
+        component={GeoLocation}
+        options={{
+          title: 'GeoLocation for BirdWatchers', //Set Header Title
+          headerLeft: () => (
+            <NavigationDrawerHeader navigationProps={navigation} />
+          ),
+          headerStyle: {
+            backgroundColor: '#1F319D', //Set Header color
+          },
+          headerTintColor: '#fff', //Set Header text color
+          headerTitleStyle: {
+            fontWeight: 'bold', //Set Header text style
+          },
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
 
 const DrawerNavigatorRoutes = props => {
   return (
@@ -219,6 +243,12 @@ const DrawerNavigatorRoutes = props => {
         options={{drawerLabel: 'Bird Identifier for BirdWatchers'}}
         component={birdWatchersScreenStack}
       />
+      <Drawer.Screen
+        name="GeoLocationScreenStack"
+        options={{drawerLabel: 'GeoLocation for BirdWatchers'}}
+        component={GeoLocationScreenStack}
+      />
+      
     </Drawer.Navigator>
   );
 };
