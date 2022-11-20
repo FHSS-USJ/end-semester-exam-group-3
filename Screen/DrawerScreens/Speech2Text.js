@@ -96,6 +96,18 @@ const Speech2Text = () => {
           style={{width: 120, height: 50}}
           source={require('../Components/recorder.png')}
         />
+         <Text
+        style={{
+          color: 'black',
+          fontSize: 11,
+          textAlign: 'center',
+          position: 'absolute',
+          top: 0,
+          marginTop: 80,
+          fontWeight: 'bold',
+        }}>
+        Click Here to Start Conversion
+      </Text>
       </TouchableOpacity>
       <Modal
         animationType="slide"
