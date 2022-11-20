@@ -29,7 +29,7 @@ const HomeScreenStack = ({navigation}) => {
         name="HomeScreen"
         component={HomeScreen}
         options={{
-          title: 'Home', //Set Header Title
+          title: 'Sound Type Identifier', //Set Header Title
           headerLeft: () => (
             <NavigationDrawerHeader navigationProps={navigation} />
           ),
@@ -208,7 +208,7 @@ const EmergencyScreenStack = ({navigation}) => {
         name="Emergency"
         component={Emergency}
         options={{
-          title: '♛ Inform Emergency for BirdWatchers', //Set Header Title
+          title: '♛ Inform Emergency', //Set Header Title
           headerLeft: () => (
             <NavigationDrawerHeader navigationProps={navigation} />
           ),
@@ -297,7 +297,7 @@ const DrawerNavigatorRoutes = props => {
       />
       <Drawer.Screen
         name="EmergencyScreenStack"
-        options={{drawerLabel: '♛ Inform Emergency for BirdWatchers'}}
+        options={{drawerLabel: '♛ Inform Emergency'}}
         component={EmergencyScreenStack}
       />
       <Drawer.Screen
