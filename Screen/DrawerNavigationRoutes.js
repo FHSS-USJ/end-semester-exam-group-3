@@ -14,7 +14,7 @@ import Text2Speech from './DrawerScreens/Text2Speech';
 import AudioTherapyScreen from './DrawerScreens/AudioTherapyScreen';
 import birdWatchers from './DrawerScreens/birdWatchers';
 import GeoLocation from './DrawerScreens/GeoLocation';
-import DistanceCalculator from './DrawerScreens/DistanceCalculator';
+import Emergency from './DrawerScreens/Emergency';
 import Weather from './DrawerScreens/Weather';
 import CustomSidebarMenu from './Components/CustomSidebarMenu';
 import NavigationDrawerHeader from './Components/NavigationDrawerHeader';
@@ -201,14 +201,14 @@ const GeoLocationScreenStack = ({navigation}) => {
   );
 };
 
-const DistanceCalculatorScreenStack = ({navigation}) => {
+const EmergencyScreenStack = ({navigation}) => {
   return (
-    <Stack.Navigator initialRouteName="DistanceCalculator">
+    <Stack.Navigator initialRouteName="Emergency">
       <Stack.Screen
-        name="DistanceCalculator"
-        component={DistanceCalculator}
+        name="Emergency"
+        component={Emergency}
         options={{
-          title: '♛ Distance Calculator for BirdWatchers', //Set Header Title
+          title: '♛ Inform Emergency for BirdWatchers', //Set Header Title
           headerLeft: () => (
             <NavigationDrawerHeader navigationProps={navigation} />
           ),
@@ -296,9 +296,9 @@ const DrawerNavigatorRoutes = props => {
         component={GeoLocationScreenStack}
       />
       <Drawer.Screen
-        name="DistanceCalculatorScreenStack"
-        options={{drawerLabel: '♛ Distance Calculator for BirdWatchers'}}
-        component={DistanceCalculatorScreenStack}
+        name="EmergencyScreenStack"
+        options={{drawerLabel: '♛ Inform Emergency for BirdWatchers'}}
+        component={EmergencyScreenStack}
       />
       <Drawer.Screen
         name="WeatherScreenStack"
