@@ -12,6 +12,7 @@ import rating from './DrawerScreens/rating';
 import Speech2Text from './DrawerScreens/Speech2Text';
 import Text2Speech from './DrawerScreens/Text2Speech';
 import AudioTherapyScreen from './DrawerScreens/AudioTherapyScreen';
+import birdWatchers from './DrawerScreens/birdWatchers';
 import CustomSidebarMenu from './Components/CustomSidebarMenu';
 import NavigationDrawerHeader from './Components/NavigationDrawerHeader';
 
@@ -151,6 +152,30 @@ const ratingScreenStack = ({navigation}) => {
   );
 };
 
+const birdWatchersScreenStack = ({navigation}) => {
+  return (
+    <Stack.Navigator initialRouteName="birdWatchers">
+      <Stack.Screen
+        name="birdWatchers"
+        component={birdWatchers}
+        options={{
+          title: 'Bird Identifier for BirdWatchers', //Set Header Title
+          headerLeft: () => (
+            <NavigationDrawerHeader navigationProps={navigation} />
+          ),
+          headerStyle: {
+            backgroundColor: '#1F319D', //Set Header color
+          },
+          headerTintColor: '#fff', //Set Header text color
+          headerTitleStyle: {
+            fontWeight: 'bold', //Set Header text style
+          },
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
 const DrawerNavigatorRoutes = props => {
   return (
     <Drawer.Navigator
@@ -188,6 +213,11 @@ const DrawerNavigatorRoutes = props => {
         name="rating"
         options={{drawerLabel: 'Rate Us'}}
         component={ratingScreenStack}
+      />
+         <Drawer.Screen
+        name="birdWatchersScreenStack"
+        options={{drawerLabel: 'Bird Identifier for BirdWatchers'}}
+        component={birdWatchersScreenStack}
       />
     </Drawer.Navigator>
   );
