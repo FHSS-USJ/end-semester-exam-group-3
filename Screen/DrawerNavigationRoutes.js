@@ -14,9 +14,10 @@ import Text2Speech from './DrawerScreens/Text2Speech';
 import AudioTherapyScreen from './DrawerScreens/AudioTherapyScreen';
 import birdWatchers from './DrawerScreens/birdWatchers';
 import GeoLocation from './DrawerScreens/GeoLocation';
+import DistanceCalculator from './DrawerScreens/DistanceCalculator';
+import Weather from './DrawerScreens/Weather';
 import CustomSidebarMenu from './Components/CustomSidebarMenu';
 import NavigationDrawerHeader from './Components/NavigationDrawerHeader';
-
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -200,6 +201,30 @@ const GeoLocationScreenStack = ({navigation}) => {
   );
 };
 
+const DistanceCalculatorScreenStack = ({navigation}) => {
+  return (
+    <Stack.Navigator initialRouteName="DistanceCalculator">
+      <Stack.Screen
+        name="DistanceCalculator"
+        component={DistanceCalculator}
+        options={{
+          title: 'Distance Calculator for BirdWatchers', //Set Header Title
+          headerLeft: () => (
+            <NavigationDrawerHeader navigationProps={navigation} />
+          ),
+          headerStyle: {
+            backgroundColor: '#1F319D', //Set Header color
+          },
+          headerTintColor: '#fff', //Set Header text color
+          headerTitleStyle: {
+            fontWeight: 'bold', //Set Header text style
+          },
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+
 const DrawerNavigatorRoutes = props => {
   return (
     <Drawer.Navigator
@@ -238,7 +263,7 @@ const DrawerNavigatorRoutes = props => {
         options={{drawerLabel: 'Rate Us'}}
         component={ratingScreenStack}
       />
-         <Drawer.Screen
+      <Drawer.Screen
         name="birdWatchersScreenStack"
         options={{drawerLabel: 'Bird Identifier for BirdWatchers'}}
         component={birdWatchersScreenStack}
@@ -248,7 +273,11 @@ const DrawerNavigatorRoutes = props => {
         options={{drawerLabel: 'GeoLocation for BirdWatchers'}}
         component={GeoLocationScreenStack}
       />
-      
+      <Drawer.Screen
+        name="DistanceCalculatorScreenStack"
+        options={{drawerLabel: 'Distance Calculator for BirdWatchers'}}
+        component={DistanceCalculatorScreenStack}
+      />
     </Drawer.Navigator>
   );
 };
