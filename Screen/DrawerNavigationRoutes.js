@@ -18,6 +18,7 @@ import Emergency from './DrawerScreens/Emergency';
 import Weather from './DrawerScreens/Weather';
 import CustomSidebarMenu from './Components/CustomSidebarMenu';
 import NavigationDrawerHeader from './Components/NavigationDrawerHeader';
+import compass from './DrawerScreens/compass';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -247,6 +248,29 @@ const WeatherScreenStack = ({navigation}) => {
     </Stack.Navigator>
   );
 };
+const CompassScreenStack = ({navigation}) => {
+  return (
+    <Stack.Navigator initialRouteName="Emergency">
+      <Stack.Screen
+        name="Compass"
+        component={compass}
+        options={{
+          title: '♛ Compass', //Set Header Title
+          headerLeft: () => (
+            <NavigationDrawerHeader navigationProps={navigation} />
+          ),
+          headerStyle: {
+            backgroundColor: '#1F319D', //Set Header color
+          },
+          headerTintColor: '#D4AF37', //Set Header text color
+          headerTitleStyle: {
+            fontWeight: 'bold', //Set Header text style
+          },
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
 const DrawerNavigatorRoutes = props => {
   return (
     <Drawer.Navigator
@@ -304,6 +328,11 @@ const DrawerNavigatorRoutes = props => {
         name="WeatherScreenStack"
         options={{drawerLabel: '♛ Weather for BirdWatchers'}}
         component={WeatherScreenStack}
+      />
+      <Drawer.Screen
+        name="CompassScreenStack"
+        options={{drawerLabel: '♛ Compass'}}
+        component={CompassScreenStack}
       />
     </Drawer.Navigator>
   );
