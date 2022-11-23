@@ -18,7 +18,7 @@ import Emergency from './DrawerScreens/Emergency';
 import Weather from './DrawerScreens/Weather';
 import CustomSidebarMenu from './Components/CustomSidebarMenu';
 import NavigationDrawerHeader from './Components/NavigationDrawerHeader';
-import compass from './DrawerScreens/compass';
+import Compass from './DrawerScreens/Compass';
 import AboutUs from './DrawerScreens/AboutUs';
 
 const Stack = createStackNavigator();
@@ -254,7 +254,7 @@ const CompassScreenStack = ({navigation}) => {
     <Stack.Navigator initialRouteName="Compass">
       <Stack.Screen
         name="Compass"
-        component={compass}
+        component={Compass}
         options={{
           title: '♛ Compass', //Set Header Title
           headerLeft: () => (
