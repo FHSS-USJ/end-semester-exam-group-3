@@ -19,6 +19,7 @@ import Weather from './DrawerScreens/Weather';
 import CustomSidebarMenu from './Components/CustomSidebarMenu';
 import NavigationDrawerHeader from './Components/NavigationDrawerHeader';
 import compass from './DrawerScreens/compass';
+import AboutUs from './DrawerScreens/AboutUs';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -250,12 +251,35 @@ const WeatherScreenStack = ({navigation}) => {
 };
 const CompassScreenStack = ({navigation}) => {
   return (
-    <Stack.Navigator initialRouteName="Emergency">
+    <Stack.Navigator initialRouteName="Compass">
       <Stack.Screen
         name="Compass"
         component={compass}
         options={{
           title: '♛ Compass', //Set Header Title
+          headerLeft: () => (
+            <NavigationDrawerHeader navigationProps={navigation} />
+          ),
+          headerStyle: {
+            backgroundColor: '#1F319D', //Set Header color
+          },
+          headerTintColor: '#D4AF37', //Set Header text color
+          headerTitleStyle: {
+            fontWeight: 'bold', //Set Header text style
+          },
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+const AboutUsScreenStack = ({navigation}) => {
+  return (
+    <Stack.Navigator initialRouteName="About Us">
+      <Stack.Screen
+        name="About Us"
+        component={AboutUs}
+        options={{
+          title: 'About Us', //Set Header Title
           headerLeft: () => (
             <NavigationDrawerHeader navigationProps={navigation} />
           ),
@@ -277,6 +301,7 @@ const DrawerNavigatorRoutes = props => {
       drawerContentOptions={{
         activeTintColor: '#cee1f2',
         color: '#cee1f2',
+        backgroundColor: '#c6cbef',
         itemStyle: {marginVertical: 5, color: 'white'},
         labelStyle: {
           color: '#d8d8d8',
@@ -333,6 +358,11 @@ const DrawerNavigatorRoutes = props => {
         name="CompassScreenStack"
         options={{drawerLabel: '♛ Compass'}}
         component={CompassScreenStack}
+      />
+      <Drawer.Screen
+        name="AboutUsScreenStack"
+        options={{drawerLabel: 'About Us'}}
+        component={AboutUsScreenStack}
       />
     </Drawer.Navigator>
   );
