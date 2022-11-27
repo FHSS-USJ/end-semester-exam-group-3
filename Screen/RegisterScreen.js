@@ -15,7 +15,9 @@ import {
 
 import Loader from './Components/Loader';
 
-const RegisterScreen = props => {
+import auth from '@react-native-firebase/auth';
+
+const RegisterScreen = ({navigation}) => {
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [userAge, setUserAge] = useState('');
@@ -32,7 +34,6 @@ const RegisterScreen = props => {
   const addressInputRef = createRef();
   const PasswordInputRef = createRef();
   const ConfirmPasswordInputRef = createRef();
-
 
   const handleSubmitButton = () => {
     setErrortext('');
@@ -73,7 +74,7 @@ const RegisterScreen = props => {
       user_Password: userPassword,
       user_ConfirmPassword: userConfirmPassword,
     };
-    var formBody = [];
+    /*var formBody = [];
     for (var key in dataToSend) {
       var encodedKey = encodeURIComponent(key);
       var encodedValue = encodeURIComponent(dataToSend[key]);
@@ -107,7 +108,35 @@ const RegisterScreen = props => {
         setLoading(false);
         console.error(error);
       });
+  };*/
+
+    //--------------------------------
+    auth()
+      .createUserWithEmailAndPassword(userEmail, userPassword)
+      .then(user => {
+        setIsRegistraionSuccess(true);
+        console.log('Registration Successful. Please Login to proceed');
+        console.log(user);
+        if (user) {
+          auth()({})
+            .then(() => navigation.replace('LoginScreen'))
+            .catch(error => {
+              alert(error);
+              console.error(error);
+            });
+        }
+      })
+      .catch(error => {
+        console.log(error);
+        setLoading(false);
+        if (error.code === 'auth/email-already-in-use') {
+          setErrortext('That email address is already in use!');
+        } else {
+          setErrortext(error.message);
+        }
+      });
   };
+  //-----------------------------------------
   if (isRegistraionSuccess) {
     return (
       <View
@@ -124,12 +153,13 @@ const RegisterScreen = props => {
         <TouchableOpacity
           style={styles.buttonStyle}
           activeOpacity={0.5}
-          onPress={() => props.navigation.navigate('LoginScreen')}>
+          onPress={() => navigation.navigate('LoginScreen')}>
           <Text style={styles.buttonTextStyle}>Login Now</Text>
         </TouchableOpacity>
       </View>
     );
   }
+
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
       <Loader loading={loading} />
