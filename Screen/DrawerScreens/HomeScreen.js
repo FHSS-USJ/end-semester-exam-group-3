@@ -22,22 +22,23 @@ const HomeScreen = () => {
             Ready for Listening
           </Text>
           <Text
-          style={{
-            fontSize: 15,
-            textAlign: 'center',
-            color: 'grey',
-          }}>
-          Note: This feature will be fully implemented in the final release of the application.
-        </Text>
-        <Text
-          style={{
-            fontSize: 15,
-            textAlign: 'center',
-            color: 'grey',
-          }}>
-         
-          All other featuers are fully implemented and can be accessed through the drawer menue.
-        </Text>
+            style={{
+              fontSize: 15,
+              textAlign: 'center',
+              color: 'grey',
+            }}>
+            Note: This feature will be fully implemented in the final release of
+            the application.
+          </Text>
+          <Text
+            style={{
+              fontSize: 15,
+              textAlign: 'center',
+              color: 'grey',
+            }}>
+            All other featuers are fully implemented and can be accessed through
+            the drawer menue.
+          </Text>
         </View>
         <Image
           style={{

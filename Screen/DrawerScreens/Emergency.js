@@ -31,7 +31,7 @@ const Emergency = () => {
         <TouchableOpacity
           activeOpacity={0.7}
           style={styles.buttonStyle}
-          onPress={() => Communications.phonecall('1919', true)}>
+          onPress={() => Communications.phonecall('0123456789', true)}>
           <Text style={styles.buttonTextStyle}> Call National Help Service</Text>
         </TouchableOpacity>
         {/* Mail: email(to, cc, bcc, subject, body) */}
@@ -53,7 +53,7 @@ const Emergency = () => {
         <TouchableOpacity
           activeOpacity={0.7}
           style={styles.buttonStyle}
-          onPress={() => Communications.text('1919')}>
+          onPress={() => Communications.text('0123456789')}>
           <Text style={styles.buttonTextStyle}>Send a Text/iMessage to National Help Service </Text>
         </TouchableOpacity>
         {/* Web: web(address = null)*/}
