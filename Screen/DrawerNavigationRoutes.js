@@ -18,6 +18,8 @@ import Emergency from './DrawerScreens/Emergency';
 import Weather from './DrawerScreens/Weather';
 import CustomSidebarMenu from './Components/CustomSidebarMenu';
 import NavigationDrawerHeader from './Components/NavigationDrawerHeader';
+import Compass from './DrawerScreens/Compass';
+import AboutUs from './DrawerScreens/AboutUs';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -247,12 +249,59 @@ const WeatherScreenStack = ({navigation}) => {
     </Stack.Navigator>
   );
 };
+const CompassScreenStack = ({navigation}) => {
+  return (
+    <Stack.Navigator initialRouteName="Compass">
+      <Stack.Screen
+        name="Compass"
+        component={Compass}
+        options={{
+          title: '♛ Compass', //Set Header Title
+          headerLeft: () => (
+            <NavigationDrawerHeader navigationProps={navigation} />
+          ),
+          headerStyle: {
+            backgroundColor: '#1F319D', //Set Header color
+          },
+          headerTintColor: '#D4AF37', //Set Header text color
+          headerTitleStyle: {
+            fontWeight: 'bold', //Set Header text style
+          },
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
+const AboutUsScreenStack = ({navigation}) => {
+  return (
+    <Stack.Navigator initialRouteName="About Us">
+      <Stack.Screen
+        name="About Us"
+        component={AboutUs}
+        options={{
+          title: 'About Us', //Set Header Title
+          headerLeft: () => (
+            <NavigationDrawerHeader navigationProps={navigation} />
+          ),
+          headerStyle: {
+            backgroundColor: '#1F319D', //Set Header color
+          },
+          headerTintColor: '#D4AF37', //Set Header text color
+          headerTitleStyle: {
+            fontWeight: 'bold', //Set Header text style
+          },
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
 const DrawerNavigatorRoutes = props => {
   return (
     <Drawer.Navigator
       drawerContentOptions={{
         activeTintColor: '#cee1f2',
         color: '#cee1f2',
+        backgroundColor: '#c6cbef',
         itemStyle: {marginVertical: 5, color: 'white'},
         labelStyle: {
           color: '#d8d8d8',
@@ -304,6 +353,16 @@ const DrawerNavigatorRoutes = props => {
         name="WeatherScreenStack"
         options={{drawerLabel: '♛ Weather for BirdWatchers'}}
         component={WeatherScreenStack}
+      />
+      <Drawer.Screen
+        name="CompassScreenStack"
+        options={{drawerLabel: '♛ Compass'}}
+        component={CompassScreenStack}
+      />
+      <Drawer.Screen
+        name="AboutUsScreenStack"
+        options={{drawerLabel: 'About Us'}}
+        component={AboutUsScreenStack}
       />
     </Drawer.Navigator>
   );

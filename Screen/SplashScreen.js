@@ -2,7 +2,7 @@
 import React, {useState, useEffect} from 'react';
 import {ActivityIndicator, View, StyleSheet, Image} from 'react-native';
 
-import AsyncStorage from '@react-native-community/async-storage';
+import auth from '@react-native-firebase/auth';
 
 const SplashScreen = ({navigation}) => {
   //State for ActivityIndicator animation
@@ -14,10 +14,10 @@ const SplashScreen = ({navigation}) => {
       //Check if user_id is set or not
       //If not then send for Authentication
       //else send to Home Screen
-      AsyncStorage.getItem('user_id').then(value =>
-        navigation.replace(value === null ? 'Auth' : 'DrawerNavigationRoutes'),
+      navigation.replace(
+        auth().currentUser ? 'Auth' : 'DrawerNavigationRoutes',
       );
-    }, 5000);
+    }, 1000);
   }, []);
 
   return (
@@ -50,3 +50,4 @@ const styles = StyleSheet.create({
     height: 80,
   },
 });
+

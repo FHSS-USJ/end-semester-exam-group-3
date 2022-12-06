@@ -15,11 +15,11 @@ import {
 
 import Loader from './Components/Loader';
 
-const RegisterScreen = props => {
+import auth from '@react-native-firebase/auth';
+
+const RegisterScreen = ({navigation}) => {
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
-  const [userAge, setUserAge] = useState('');
-  const [userAddress, setUserAddress] = useState('');
   const [userPassword, setUserPassword] = useState('');
   const [userConfirmPassword, setUserConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -28,11 +28,8 @@ const RegisterScreen = props => {
 
   const nameInputRef = createRef();
   const emailInputRef = createRef();
-  const ageInputRef = createRef();
-  const addressInputRef = createRef();
   const PasswordInputRef = createRef();
   const ConfirmPasswordInputRef = createRef();
-
 
   const handleSubmitButton = () => {
     setErrortext('');
@@ -62,52 +59,32 @@ const RegisterScreen = props => {
       alert("Passwords don't match.");
       return;
     }
-
-    //Show Loader
-    setLoading(true);
-    var dataToSend = {
-      user_name: userName,
-      user_email: userEmail,
-      user_age: userAge,
-      user_address: userAddress,
-      user_Password: userPassword,
-      user_ConfirmPassword: userConfirmPassword,
-    };
-    var formBody = [];
-    for (var key in dataToSend) {
-      var encodedKey = encodeURIComponent(key);
-      var encodedValue = encodeURIComponent(dataToSend[key]);
-      formBody.push(encodedKey + '=' + encodedValue);
-    }
-    formBody = formBody.join('&');
-
-    fetch('https://aboutreact.herokuapp.com/register.php', {
-      method: 'POST',
-      body: formBody,
-      headers: {
-        //Header Defination
-        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
-      },
-    })
-      .then(response => response.json())
-      .then(responseJson => {
-        //Hide Loader
-        setLoading(false);
-        console.log(responseJson);
-        // If server response message same as Data Matched
-        if (responseJson.status == 1) {
-          setIsRegistraionSuccess(true);
-          console.log('Registration Successful. Please Login to proceed');
-        } else {
-          setErrortext('Registration Unsuccessful');
+    auth()
+      .createUserWithEmailAndPassword(userEmail, userPassword)
+      .then(user => {
+        setIsRegistraionSuccess(true);
+        console.log('Registration Successful. Please Login to proceed');
+        console.log(user);
+        if (user) {
+          auth()({})
+            .then(() => navigation.replace('LoginScreen'))
+            .catch(error => {
+              alert(error);
+              console.error(error);
+            });
         }
       })
       .catch(error => {
-        //Hide Loader
+        console.log(error);
         setLoading(false);
-        console.error(error);
+        if (error.code === 'auth/email-already-in-use') {
+          setErrortext('That email address is already in use!');
+        } else {
+          setErrortext(error.message);
+        }
       });
   };
+
   if (isRegistraionSuccess) {
     return (
       <View
@@ -124,12 +101,13 @@ const RegisterScreen = props => {
         <TouchableOpacity
           style={styles.buttonStyle}
           activeOpacity={0.5}
-          onPress={() => props.navigation.navigate('LoginScreen')}>
+          onPress={() => navigation.navigate('LoginScreen')}>
           <Text style={styles.buttonTextStyle}>Login Now</Text>
         </TouchableOpacity>
       </View>
     );
   }
+
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
       <Loader loading={loading} />
@@ -175,40 +153,10 @@ const RegisterScreen = props => {
               placeholderTextColor="#8b9cb5"
               keyboardType="email-address"
               ref={emailInputRef}
-              returnKeyType="next"
               onSubmitEditing={() =>
-                ageInputRef.current && ageInputRef.current.focus()
+                PasswordInputRef.current && PasswordInputRef.current.focus()
               }
-              blurOnSubmit={false}
-            />
-          </View>
-          <View style={styles.SectionStyle}>
-            <TextInput
-              style={styles.inputStyle}
-              onChangeText={UserAge => setUserAge(UserAge)}
-              underlineColorAndroid="#f000"
-              placeholder="Enter Age"
-              placeholderTextColor="#8b9cb5"
-              keyboardType="numeric"
-              ref={ageInputRef}
               returnKeyType="next"
-              onSubmitEditing={() =>
-                addressInputRef.current && addressInputRef.current.focus()
-              }
-              blurOnSubmit={false}
-            />
-          </View>
-          <View style={styles.SectionStyle}>
-            <TextInput
-              style={styles.inputStyle}
-              onChangeText={UserAddress => setUserAddress(UserAddress)}
-              underlineColorAndroid="#f000"
-              placeholder="Enter Address"
-              placeholderTextColor="#8b9cb5"
-              autoCapitalize="sentences"
-              ref={addressInputRef}
-              returnKeyType="next"
-              onSubmitEditing={Keyboard.dismiss}
               blurOnSubmit={false}
             />
           </View>
@@ -220,9 +168,12 @@ const RegisterScreen = props => {
               placeholder="Password"
               placeholderTextColor="#8b9cb5"
               keyboardType="number-pad"
-              ref={addressInputRef}
+              ref={PasswordInputRef}
               returnKeyType="next"
-              onSubmitEditing={Keyboard.dismiss}
+              onSubmitEditing={() =>
+                ConfirmPasswordInputRef.current &&
+                ConfirmPasswordInputRef.current.focus()
+              }
               blurOnSubmit={false}
             />
           </View>
@@ -236,7 +187,7 @@ const RegisterScreen = props => {
               placeholder="Confirm Password"
               placeholderTextColor="#8b9cb5"
               keyboardType="number-pad"
-              ref={addressInputRef}
+              ref={ConfirmPasswordInputRef}
               returnKeyType="next"
               onSubmitEditing={Keyboard.dismiss}
               blurOnSubmit={false}
