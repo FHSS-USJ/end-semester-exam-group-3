@@ -68,15 +68,6 @@ const birdWatchers = () => {
           }}
           source={require('../Components/recorder.png')}
         />
-              <Text
-            style={{
-              fontSize: 12,
-              textAlign: 'center',
-              marginBottom: 16,
-            }}>
-    Note: This feature will be fully implemented in the final release of the application.
-          </Text>
-
         <Text
           style={{
             fontSize: 16,
