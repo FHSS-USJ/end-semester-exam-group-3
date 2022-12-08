@@ -1,184 +1,125 @@
-import React, { useState } from 'react';
-import { TextInput,ScrollView,Animated,TouchableWithoutFeedback,Text,StyleSheet,View,SafeAreaView,TouchableOpacity,ImageBackground} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import React, {useState} from 'react';
 
-export default function AboutApp() {
-  const [starRating, setStarRating] = useState(null);
+// import all the components we are going to use
+import {
+  SafeAreaView,
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 
-  const animatedButtonScale = new Animated.Value(1);
+const rating = () => {
+  // To set the default Star Selected
+  const [defaultRating, setDefaultRating] = useState(2);
+  // To set the max number of Stars
+  const [maxRating, setMaxRating] = useState([1, 2, 3, 4, 5]);
 
-  const handlePressIn = () => {
-    Animated.spring(animatedButtonScale, {
-      toValue: 1.5,
-      useNativeDriver: true,
-      speed: 50,
-      bounciness: 4
-    }).start();
-  };
+  // Filled Star. 
+  const starImageFilled =
+    'https://raw.githubusercontent.com/AboutReact/sampleresource/master/star_filled.png';
+  // Empty Star. 
+  const starImageCorner =
+    'https://raw.githubusercontent.com/AboutReact/sampleresource/master/star_corner.png';
 
-  const handlePressOut = () => {
-    Animated.spring(animatedButtonScale, {
-      toValue: 1,
-      useNativeDriver: true,
-      speed: 50,
-      bounciness: 4,
-    }).start();
-  };
-
-  const animatedScaleStyle = {
-    transform: [{ scale: animatedButtonScale }],
+  const CustomRatingBar = () => {
+    return (
+      <View style={styles.customRatingBarStyle}>
+        {maxRating.map((item, key) => {
+          return (
+            <TouchableOpacity
+              activeOpacity={0.7}
+              key={item}
+              onPress={() => setDefaultRating(item)}>
+              <Image
+                style={styles.starImageStyle}
+                source={
+                  item <= defaultRating
+                    ? {uri: starImageFilled}
+                    : {uri: starImageCorner}
+                }
+              />
+            </TouchableOpacity>
+          );
+        })}
+      </View>
+    );
   };
 
   return (
-      
+    <SafeAreaView style={styles.container}>
       <View style={styles.container}>
-        <ImageBackground
-            style={styles.defaultBg}
-            resizeMode={'stretch'}
-           
-          />
-        
-         <ScrollView>
-        <View style={{backgroundColor:'#f7f7f7'}}>
-        <Text style={styles.heading}>{starRating ? `${starRating}` : 'Please Rate Us'}</Text>
-        <View style={styles.stars}>
-        <TouchableWithoutFeedback
-            onPressIn={handlePressIn}
-            onPressOut={handlePressOut}
-            onPress={() => setStarRating(1)}
-          >
-            <Animated.View style={animatedScaleStyle}>            
-              <Icon
-                name={starRating >= 1 ? 'star' : 'star-outline'}
-                size={32}
-                style={starRating >= 1 ? styles.starSelected : styles.starUnselected}
-              />
-            </Animated.View>
-          </TouchableWithoutFeedback >
-          <TouchableWithoutFeedback
-            onPressIn={handlePressIn}
-            onPressOut={handlePressOut}
-            onPress={() => setStarRating(2)}
-          >
-            <Animated.View style={animatedScaleStyle}>
-              <Icon
-                name={starRating >= 2 ? 'star' : 'star-outline'}
-                size={32}
-                style={starRating >= 2 ? styles.starSelected : styles.starUnselected}
-              />
-            </Animated.View>
-          </TouchableWithoutFeedback >
-          <TouchableWithoutFeedback
-            onPressIn={handlePressIn}
-            onPressOut={handlePressOut}
-            onPress={() => setStarRating(3)}
-          >
-            <Animated.View style={animatedScaleStyle}>
-              <Icon
-                name={starRating >= 3 ? 'star' : 'star-outline'}
-                size={32}
-                style={starRating >= 3 ? styles.starSelected : styles.starUnselected}
-              />
-            </Animated.View>
-          </TouchableWithoutFeedback >
-          <TouchableWithoutFeedback
-            onPressIn={handlePressIn}
-            onPressOut={handlePressOut}
-            onPress={() => setStarRating(4)}
-          >
-            <Animated.View style={animatedScaleStyle}>
-              <Icon
-                name={starRating >= 4 ? 'star' : 'star-outline'}
-                size={32}
-                style={starRating >= 4 ? styles.starSelected : styles.starUnselected}
-              />
-            </Animated.View>
-          </TouchableWithoutFeedback >
-          <TouchableWithoutFeedback
-            onPressIn={handlePressIn}
-            onPressOut={handlePressOut}
-            onPress={() => setStarRating(5)}
-          >
-            <Animated.View style={animatedScaleStyle}>
-            <Icon
-              name={starRating >= 5 ? 'star' : 'star-outline'}
-              size={32}
-              style={starRating >= 5 ? styles.starSelected : styles.starUnselected}
-            />
-            </Animated.View>
-          </TouchableWithoutFeedback >
-        </View>
-       
-        
-        <TouchableOpacity style={styles.defaultButton}>
-          
-            <Text
-              style={styles.button}>
-             
-            Submit 
-            
-            </Text>
-          </TouchableOpacity>
-        
-        </View>
-      </ScrollView>
+        <Text style={styles.titleText}>
+          Your Honest Rating is Much Valued!
+        </Text>
+        <Text style={styles.textStyle}>How was your experience with us?</Text>
+        <Text style={styles.textStyleSmall}>Please Rate Us</Text>
+        {/* View to hold our Stars */}
+        <CustomRatingBar />
+        <Text style={styles.textStyle}>
+          {/* To show the rating selected */}
+          {defaultRating} / {Math.max.apply(null, maxRating)}
+        </Text>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          style={styles.buttonStyle}
+          onPress={() => alert('Thank You for rating us a ' + defaultRating+'/5')}>
+          {/* Clicking on button will show the rating as an alert */}
+          <Text style={styles.buttonTextStyle}>Submit</Text>
+        </TouchableOpacity>
       </View>
+    </SafeAreaView>
   );
-}
+};
+
+export default rating;
 
 const styles = StyleSheet.create({
   container: {
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    justifyContent: 'flex-start',
+    flex: 1,
+    backgroundColor: 'white',
+    padding: 10,
+    justifyContent: 'center',
+    textAlign: 'center',
   },
-  heading: {
-    fontSize: 24,
+  titleText: {
+    padding: 8,
+    fontSize: 16,
+    textAlign: 'center',
     fontWeight: 'bold',
-    marginBottom: 20,
-    marginTop:1,
-    color:'',
-    alignSelf: 'center',
   },
-  stars: {
-    display: 'flex',
+  textStyle: {
+    textAlign: 'center',
+    fontSize: 23,
+    color: '#000',
+    marginTop: 15,
+  },
+  textStyleSmall: {
+    textAlign: 'center',
+    fontSize: 16,
+    color: '#000',
+    marginTop: 15,
+  },
+  buttonStyle: {
+    justifyContent: 'center',
     flexDirection: 'row',
-    marginTop:-10,
-    alignSelf: 'center',
-  },
-  starUnselected: {
-    color: '#aaa',
-  },
-  starSelected: {
-    color: '',
-  },
-  
-  defaultBg: {
-    width: '100%',
-    height: 220,
-    resizeMode: 'cover',
-  },
-
-
-  defaultButton:{
+    marginTop: 30,
     padding: 15,
     backgroundColor: '#1F319D',
-    borderRadius: 10,
-    marginBottom:20,
-    fontSize: 20,
-    
-  
-    marginLeft:10,
-    marginRight:10
   },
-  button:{
+  buttonTextStyle: {
+    color: '#fff',
     textAlign: 'center',
-    color: '#FFFFFF',
-    fontWeight: 'bold',
-    fontSize: 16,
-    
-  }
+  },
+  customRatingBarStyle: {
+    justifyContent: 'center',
+    flexDirection: 'row',
+    marginTop: 30,
+  },
+  starImageStyle: {
+    width: 40,
+    height: 40,
+    resizeMode: 'cover',
+  },
 });
