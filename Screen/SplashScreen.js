@@ -1,4 +1,3 @@
-
 // Import React and Component
 import React, {useState, useEffect} from 'react';
 import {ActivityIndicator, View, StyleSheet, Image} from 'react-native';
@@ -15,7 +14,9 @@ const SplashScreen = ({navigation}) => {
       //Check if user_id is set or not
       //If not then send for Authentication
       //else send to Home Screen
-      navigation.replace(auth().currentUser ? 'HomeScreen' : 'Auth');
+      navigation.replace(
+        auth().currentUser ? 'Auth' : 'DrawerNavigationRoutes',
+      );
     }, 1000);
   }, []);
 

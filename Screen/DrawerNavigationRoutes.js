@@ -329,11 +329,7 @@ const DrawerNavigatorRoutes = props => {
         options={{drawerLabel: 'Audio Therapy'}}
         component={AudioTherapyScreenStack}
       />
-      <Drawer.Screen
-        name="rating"
-        options={{drawerLabel: 'Rate Us'}}
-        component={RatingScreenStack}
-      />
+
       <Drawer.Screen
         name="birdWatchersScreenStack"
         options={{drawerLabel: '♛ Bird Identifier for BirdWatchers'}}
@@ -344,11 +340,7 @@ const DrawerNavigatorRoutes = props => {
         options={{drawerLabel: '♛ GeoLocation for BirdWatchers'}}
         component={GeoLocationScreenStack}
       />
-      <Drawer.Screen
-        name="EmergencyScreenStack"
-        options={{drawerLabel: '♛ Inform Emergency'}}
-        component={EmergencyScreenStack}
-      />
+      
       <Drawer.Screen
         name="WeatherScreenStack"
         options={{drawerLabel: '♛ Weather for BirdWatchers'}}
@@ -358,6 +350,16 @@ const DrawerNavigatorRoutes = props => {
         name="CompassScreenStack"
         options={{drawerLabel: '♛ Compass'}}
         component={CompassScreenStack}
+      />
+      <Drawer.Screen
+        name="EmergencyScreenStack"
+        options={{drawerLabel: '♛ Inform Emergency'}}
+        component={EmergencyScreenStack}
+      />
+      <Drawer.Screen
+        name="rating"
+        options={{drawerLabel: 'Rate Us'}}
+        component={RatingScreenStack}
       />
       <Drawer.Screen
         name="AboutUsScreenStack"
