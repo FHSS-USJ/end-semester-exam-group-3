@@ -12,7 +12,8 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 
-import AsyncStorage from '@react-native-community/async-storage';
+//import AsyncStorage from '@react-native-community/async-storage';
+import auth from '@react-native-firebase/auth';
 
 import Loader from './Components/Loader';
 
@@ -34,7 +35,7 @@ const LoginScreen = ({navigation}) => {
       alert('Please fill Password');
       return;
     }
-    setLoading(true);
+    /*setLoading(true);
     let dataToSend = {user_email: userEmail, user_password: userPassword};
     let formBody = [];
     for (let key in dataToSend) {
@@ -71,6 +72,25 @@ const LoginScreen = ({navigation}) => {
         //Hide Loader
         setLoading(false);
         console.error(error);
+      });
+  };*/
+
+    auth()
+      .signInWithEmailAndPassword(userEmail, userPassword)
+      .then(user => {
+        console.log(user);
+        // If server response message same as Data Matched
+        if (user) navigation.replace('DrawerNavigationRoutes');
+      })
+      .catch(error => {
+        console.log(error);
+        setLoading(false);
+        if (error.code === 'auth/invalid-email') setErrortext(error.message);
+        else if (error.code === 'auth/user-not-found')
+          setErrortext('No User Found');
+        else {
+          setErrortext('Please check your email id or password');
+        }
       });
   };
 
@@ -145,14 +165,8 @@ const LoginScreen = ({navigation}) => {
           </KeyboardAvoidingView>
           <Text
             style={styles.registerTextStyle}
-            onPress={() => navigation.navigate('forgetpasswordScreen')}>
+            onPress={() => navigation.navigate('ForgetPasswordScreen')}>
             forget password
-          </Text>
-          <Text
-            style={styles.registerTextStyle}
-            onPress={() => navigation.navigate('')}>
-            (NOTE: please use the UserEmail as 'dummy@abc.com' and the Password
-            as '12345' for login to asses the Intermediate release 02)
           </Text>
         </View>
       </ScrollView>
