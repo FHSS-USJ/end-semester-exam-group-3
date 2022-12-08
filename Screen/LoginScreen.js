@@ -12,7 +12,7 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 
-//import AsyncStorage from '@react-native-community/async-storage';
+
 import auth from '@react-native-firebase/auth';
 
 import Loader from './Components/Loader';
@@ -35,45 +35,6 @@ const LoginScreen = ({navigation}) => {
       alert('Please fill Password');
       return;
     }
-    /*setLoading(true);
-    let dataToSend = {user_email: userEmail, user_password: userPassword};
-    let formBody = [];
-    for (let key in dataToSend) {
-      let encodedKey = encodeURIComponent(key);
-      let encodedValue = encodeURIComponent(dataToSend[key]);
-      formBody.push(encodedKey + '=' + encodedValue);
-    }
-    formBody = formBody.join('&');
-
-    fetch('https://aboutreact.herokuapp.com/login.php', {
-      method: 'POST',
-      body: formBody,
-      headers: {
-        //Header Defination
-        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
-      },
-    })
-      .then(response => response.json())
-      .then(responseJson => {
-        //Hide Loader
-        setLoading(false);
-        console.log(responseJson);
-        // If server response message same as Data Matched
-        if (responseJson.status == 1) {
-          AsyncStorage.setItem('user_id', responseJson.data[0].user_id);
-          console.log(responseJson.data[0].user_id);
-          navigation.replace('DrawerNavigationRoutes');
-        } else {
-          setErrortext('Please check your email id or password');
-          console.log('Please check your email id or password');
-        }
-      })
-      .catch(error => {
-        //Hide Loader
-        setLoading(false);
-        console.error(error);
-      });
-  };*/
 
     auth()
       .signInWithEmailAndPassword(userEmail, userPassword)
@@ -165,8 +126,8 @@ const LoginScreen = ({navigation}) => {
           </KeyboardAvoidingView>
           <Text
             style={styles.registerTextStyle}
-            onPress={() => navigation.navigate('ForgetPasswordScreen')}>
-            forget password
+            onPress={() => navigation.navigate('ForgetPassword')}>
+            Forget password
           </Text>
         </View>
       </ScrollView>
