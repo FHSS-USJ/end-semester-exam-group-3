@@ -12,6 +12,27 @@ import React from 'react';
 const AboutUs = () => {
     return (
       <ScrollView>
+       
+          {/* <Image
+            style={{
+              width: '50%',
+              height: 80,
+              // resizeMode: 'contain',
+              alignSelf: 'center',
+              resizeMode: 'stretch',
+            }}
+            source={require('../Components/logo.png')}
+          /> */}
+  
+  <Image source={require('../Components/logo.png')}
+                  style={{
+                    width: '50%',
+                    height: 100,
+                    resizeMode: 'contain',
+                    alignSelf: 'center',
+                    margin: 30,
+                  }}
+                />
         <View style={styles.aboutContainer}>
           <View style={styles.aboutLayout}>
             <Text style={[styles.paraStyle, styles.aboutPara]}>
@@ -23,7 +44,9 @@ const AboutUs = () => {
           </View>
           <Text style={styles.MainTitle}> About Developers </Text>
           <Text style={styles.mainHeader}>
-            Bsc.Hons in Information and Communication Technology{' '}
+            Developed in partial completion of the Mobile Application Development
+            - ICTC 2202.3 module Bsc.Hons in Information and Communication
+            Technology{' '}
           </Text>
           <Text style={styles.paraStyle}>
             {' '}
@@ -41,9 +64,11 @@ const AboutUs = () => {
   
           <View style={styles.aboutLayout}>
             <Text style={[styles.paraStyle, styles.aboutPara]}>
-              We are undergraduates in Bsc.hons in ict from University of Sri
-              Jayawardenepura. Our vision is to develop very useful software for
-              the entire society.
+              ------------------ Group 03 ------------------- 
+              -----Kavya Lokuge - AR98155-----
+              -----Nipuni Cabral - AR98155-----
+              -----Lihini Perera - AR98155-----
+              -----Pavithra Dhananjani - AR98155-----
             </Text>
           </View>
   
@@ -95,7 +120,7 @@ const AboutUs = () => {
         </View>
       </ScrollView>
     );
-};
+  };
   
 const styles = StyleSheet.create({
     aboutContainer: {
@@ -112,10 +137,10 @@ const styles = StyleSheet.create({
       fontSize: 20,
       color: '#000000',
       fontWeight: 'bold',
-      fontStyle: 'italic',
+      // fontStyle: 'italic',
       textTransform: 'uppercase',
+      textAlign: 'center',
       marginTop: 50,
-      alignSelf: 'flex-start',
       marginStart: 10,
       textShadowColor: 'blue',
       textShadowRadius: 6,
@@ -185,4 +210,3 @@ const styles = StyleSheet.create({
 });
   
 export default AboutUs;
-  
