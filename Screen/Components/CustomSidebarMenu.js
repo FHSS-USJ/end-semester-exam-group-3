@@ -1,7 +1,8 @@
 // Import React and Component
 // import React from 'react';
 import * as React from 'react';
-import {View, Text, Alert, StyleSheet} from 'react-native';
+import {View, Text, Alert, StyleSheet, ImageBackground} from 'react-native';
+import auth from '@react-native-firebase/auth';
 
 import {
   DrawerContentScrollView,
@@ -9,20 +10,22 @@ import {
   DrawerItem,
 } from '@react-navigation/drawer';
 
-import AsyncStorage from '@react-native-community/async-storage';
-
 const CustomSidebarMenu = props => {
   return (
-    <View style={stylesSidebar.sideMenuContainer}>
-      <View style={stylesSidebar.profileHeader}>
-        <View style={stylesSidebar.profileHeaderPicCircle}>
-          <Text style={{fontSize: 25, color: '#1F319D'}}>
-            {'Sound Cores'.charAt(0)}
-          </Text>
+    <View style={{flex: 1}}>
+      <ImageBackground
+        source={require('../../Image/bg.png')}
+        style={{padding: 2}}>
+        <View style={stylesSidebar.profileHeader}>
+          <View style={stylesSidebar.profileHeaderPicCircle}>
+            <Text style={{fontSize: 40, color: '#00008B'}}>
+              {'Sound Cores'.charAt(0)}
+            </Text>
+          </View>
+          <Text style={stylesSidebar.profileHeaderText}>Sound Cores</Text>
         </View>
-        <Text style={stylesSidebar.profileHeaderText}>SoundCores</Text>
-      </View>
-      <View style={stylesSidebar.profileHeaderLine} />
+        <View style={stylesSidebar.profileHeaderLine} />
+      </ImageBackground>
 
       <DrawerContentScrollView {...props}>
         <DrawerItemList {...props} />
@@ -43,8 +46,17 @@ const CustomSidebarMenu = props => {
                 {
                   text: 'Confirm',
                   onPress: () => {
-                    AsyncStorage.clear();
-                    props.navigation.replace('Auth');
+                    auth()
+                      .signOut()
+                      .then(() => props.navigation.replace('Auth'))
+                      .catch(error => {
+                        console.log(error);
+                        if (error.code === 'auth/no-current-user') {
+                          props.navigation.replace('Auth');
+                        } else {
+                          alert(error);
+                        }
+                      });
                   },
                 },
               ],
@@ -85,10 +97,11 @@ const stylesSidebar = StyleSheet.create({
     alignItems: 'center',
   },
   profileHeaderText: {
-    color: '#1F319',
+    color: '#000000',
     alignSelf: 'center',
     paddingHorizontal: 10,
     fontWeight: 'bold',
+    fontSize: 20,
   },
   profileHeaderLine: {
     height: 1,
@@ -97,3 +110,4 @@ const stylesSidebar = StyleSheet.create({
     marginTop: 15,
   },
 });
+
