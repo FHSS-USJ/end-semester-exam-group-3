@@ -14,7 +14,6 @@ import RegisterScreen from './Screen/RegisterScreen';
 import DrawerNavigationRoutes from './Screen/DrawerNavigationRoutes';
 import ForgetPassword from './Screen/ForgetPassword';
 
-
 const Stack = createStackNavigator();
 
 const Auth = () => {
@@ -57,3 +56,36 @@ const Auth = () => {
     </Stack.Navigator>
   );
 };
+
+/* Switch Navigator for those screens which needs to be switched only once
+  and we don't want to switch back once we switch from them to the next one */
+const App = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="SplashScreen">
+        {/* SplashScreen which will come once for 5 Seconds */}
+        <Stack.Screen
+          name="SplashScreen"
+          component={SplashScreen}
+          // Hiding header for Splash Screen
+          options={{headerShown: false}}
+        />
+        {/* Auth Navigator which includer Login Signup will come once */}
+        <Stack.Screen
+          name="Auth"
+          component={Auth}
+          options={{headerShown: false}}
+        />
+        {/* Navigation Drawer as a landing page */}
+        <Stack.Screen
+          name="DrawerNavigationRoutes"
+          component={DrawerNavigationRoutes}
+          // Hiding header for Navigation Drawer as we will use our custom header
+          options={{headerShown: false}}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+
+export default App;
