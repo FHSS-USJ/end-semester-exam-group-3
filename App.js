@@ -12,7 +12,7 @@ import SplashScreen from './Screen/SplashScreen';
 import LoginScreen from './Screen/LoginScreen';
 import RegisterScreen from './Screen/RegisterScreen';
 import DrawerNavigationRoutes from './Screen/DrawerNavigationRoutes';
-
+import ForgetPassword from './Screen/ForgetPassword';
 
 const Stack = createStackNavigator();
 
@@ -39,10 +39,23 @@ const Auth = () => {
           },
         }}
       />
+      <Stack.Screen
+        name="ForgetPassword"
+        component={ForgetPassword}
+        options={{
+          title: 'Forget Password', //Set Header Title
+          headerStyle: {
+            backgroundColor: '#1F319D', //Set Header color
+          },
+          headerTintColor: '#fff', //Set Header text color
+          headerTitleStyle: {
+            fontWeight: 'bold', //Set Header text style
+          },
+        }}
+      />
     </Stack.Navigator>
   );
 };
-
 
 /* Switch Navigator for those screens which needs to be switched only once
   and we don't want to switch back once we switch from them to the next one */
